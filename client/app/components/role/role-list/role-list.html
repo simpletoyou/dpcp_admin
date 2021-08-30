@@ -1,48 +1,94 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: chenchuhua
+ * @Date: 2021-08-30 10:36:36
+ * @LastEditors: chenchuhua
+ * @LastEditTime: 2021-08-30 16:20:20
+-->
 <div class="panel-wrap">
     <ol class="breadcrumb fn-clearfix">
-        <li>角色管理</li>
+        <li>DPCP参数配置</li>
     </ol>
     <div class="ui-box">
-        <div class="body-title">角色列表</div>
-        <table class="table table-striped table-bordered table-hover asset-table">
-            <thead>
-            <tr>
-                <th width="5%">ID</th>
-                <th width="25%">角色名称</th>
-                <th width="10%">人数</th>
-                <th width="30%">操作</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr ng-repeat="i in roleList">
-                <td>{{i.roleId}}</td>
-                <td>{{i.roleName}}</td>
-                <td>{{i.count}}</td>
-                <td>
-                    <a href="javascript:;" ng-click="vm.rolePeople(i.roleId)">人员查看</a>
-                    <a href="javascript:;" ng-click="vm.rolePerm(i)">权限管理</a>
-                    <a href="javascript:;" ng-click="vm.delRole(i.roleId)">删除角色</a>
-                </td>
-            </tr>
-            </tbody>
-        </table>
-        <!--分页-->
-        <div class="ui-pager-box" ng-if="totalNum>0">
-            <span>共 {{totalNum}} 条数据</span>
-            <ul uib-pagination
-                previous-text="上一页"
-                next-text="下一页"
-                first-text="首页"
-                last-text="尾页"
-                total-items="totalNum"
-                ng-model="vm.pageNo"
-                max-size="5"
-                items-per-page="pageSize || 10"
-                align="right"
-                class="pagination"
-                boundary-links="true"
-                ng-change="vm.pageChanged(vm.pageNo)"
-                rotate="false"></ul>
-        </div>
+        <form class="form-horizontal" role="form" style="line-height: 36px;">
+            <div class="title">铸币系数</div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <div class="col-sm-5">基础铸币系数(每日)：</div>
+                    <span>10%</span>
+                    <span class="btn btn-primary col-md-offset-1">更新</span>
+                    <span class="btn btn-default">编辑</span>
+                </div>
+                <div class="col-sm-6">
+                    <div class="name">查询邀请码</div>
+                    <input type="text" class="form-control" maxlength="50" placeholder="请输入地址" id="inviteCode" />
+                    <div>邀请码为：0x34355hf</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-6">
+                    <div class="col-sm-5">预期铸币比例：</div>
+                    <span>10%</span>
+                    <div class="col-sm-8">
+                    <div>
+                        <span>7天： 10%</span>
+                        <span>30天： 12%</span>
+                    </div>
+                    <div>
+                        <span>90天： 150%</span>
+                        <span>180天： 20%</span>
+                    </div>
+                    <div>
+                        <span class="btn btn-primary">编辑</span>
+                        <span class="btn btn-default">保存</span>
+                    </div>
+                </div>
+                </div>
+                <div class="col-sm-6">
+                    <div class="name">查询地址</div>
+                    <input type="text" class="form-control" maxlength="50" placeholder="请输入邀请码" id="inviteCode" />
+                    <div>地址为：0xcb59ae262e60c4b365cfa422b0a737588c89d7dab1db4d3ab9e5464e6</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <div class="col-sm-4">容忍度（超过预期铸币的比例）：
+                    </div>
+                    <span>10%</span>
+                    <span class="btn btn-primary col-md-offset-1">更新</span>
+                    <span class="btn btn-default">编辑</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <div class="col-sm-4">增减系数（超过容忍度后浮动比例）：
+                    </div>
+                    <span>10%</span>
+                    <span class="btn btn-primary col-md-offset-1">更新</span>
+                    <span class="btn btn-default">编辑</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <div class="col-sm-4">会员加成系数：
+                    </div>
+                    <span>10%</span>
+                    <span class="btn btn-primary col-md-offset-1">更新</span>
+                    <span class="btn btn-default">编辑</span>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-sm-8">
+                    <div class="col-sm-4">会员分享铸币比例：
+                    </div>
+                    <span>10%</span>
+                    <span class="btn btn-primary col-md-offset-1">更新</span>
+                    <span class="btn btn-default">编辑</span>
+                </div>
+            </div>
+
+        </form>
     </div>
+
 </div>

@@ -13,7 +13,6 @@ class ListController {
 
         this.list = null;
 
-        this.lockStatus = 'UNLOCK';//默认显示可用账户
         this.condition = {
             pageNo:1,
             pageSize:10
@@ -25,6 +24,9 @@ class ListController {
             'CUSTOM_SERVICE':'客服',
             'ACCOUNTANT':'会计',
         }
+
+        this.accountNo = window.localStorage.getItem('account-no');
+
         this.init();
     }
 
@@ -44,11 +46,10 @@ class ListController {
 
 
     /**
-     * 获取列表
+     * 获取我的账号信息
      */
     _fetchList() {
         this.isLoading = true;
-
         let param = Object.assign({
             lockStatus :this.lockStatus
         }, this.condition);
@@ -65,10 +66,6 @@ class ListController {
         });
     }
 
-    changeStatus(){
-        this.condition.pageNo = 1;
-        this._fetchList();
-    }
 
     /**
      * 锁定管理员用户
@@ -145,18 +142,12 @@ class ListController {
     }
 
 
-    /**
-     * 获取登录信息
-     * */
-    fetchLoginInfo(uid){
-        this.$location.url('/admin/user/login-log?uid='+uid)
-
-    }
 
     /**
      * 重置登录密码
      * */
-    resetPassword(uid){
+    resetPassword(){
+        return
         let that = this;
         let modalInstance = this.$uibModal.open({
             template: passwordDialog,
@@ -194,7 +185,8 @@ class ListController {
     /**
      * 重置谷歌验证码
      * */
-    resetGoogleAuth(uid){
+    resetGoogleAuth(){
+        return
         let that = this;
         let modalInstance = this.$uibModal.open({
             template: passwordDialog,

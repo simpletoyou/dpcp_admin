@@ -4,7 +4,7 @@
  * @Author: chenchuhua
  * @Date: 2021-08-30 10:36:33
  * @LastEditors: chenchuhua
- * @LastEditTime: 2021-08-30 10:58:35
+ * @LastEditTime: 2021-08-30 14:29:29
  */
 const tree_items = [
     //菜单列表
@@ -21,18 +21,25 @@ const tree_items = [
             }
         ]
     },
-    //角色
+    //DPCP Box
     {
-        // role:'USER',
         default: true,
-        title: '角色',
+        title: 'DPCP Box',
         url: '/role/list',
         nodes: [{
-                title: '角色管理',
+                title: '参数配置',
                 url: '/role/list',
             },
             {
-                title: '添加角色',
+                title: '产品文档',
+                url: '/role/add'
+            },
+            {
+                title: '公告发布',
+                url: '/role/list'
+            },
+            {
+                title: '用户反馈',
                 url: '/role/add'
             }
         ]
