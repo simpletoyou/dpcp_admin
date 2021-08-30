@@ -1,0 +1,57 @@
+{
+	"title":"渠道及费率管理 > 机构管理 > 添加机构",
+	"path":"/organ/organAdd",
+	"query":{
+		"url":"/organ/organAdd",
+		"method":"post",
+		"params":[{
+			"key": "orgName",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "机构名称",
+		       "required": true
+		    }
+		},{
+			"key": "orgId",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "机构编码",
+		       "required": true
+		    }
+		},{
+			"key": "",
+			"type": "select",
+		    "templateOptions": {
+				"label": "账户类型",
+				"options": [{
+					"value": 0,
+					"name": "人民币账户"
+				}, {
+					"value": 1,
+					"name": "GOP账户"
+				}]
+			}
+		},{
+			"key": "stlAccNo",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "结算账号",
+		       "required": true
+		    }
+		},{
+			"key": "bankRefNo",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "结算银行账号",
+		       "required": true
+		    }
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    }
+}

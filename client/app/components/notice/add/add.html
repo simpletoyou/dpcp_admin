@@ -1,0 +1,46 @@
+<div class="module-notice module-notice-list">
+    <ol class="breadcrumb">
+        <li><a href="#/notice/list">公告</a></li>
+        <li class="active">添加公告</li>
+    </ol>
+    <div class="ui-box">
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">标题</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" maxlength="100" ng-model="vm.form.title"
+                    placeholder="请输入公告标题">
+            </div>
+            <div class="form-group">
+                <label for="time">时间</label>
+                <input type="text" id="time" maxlength="100" class="form-control" ng-model="vm.form.createTime "
+                    placeholder="请输入公告发布时间">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail3">公告类型</label>
+                <select class="form-control"  ng-model="vm.form.msgType">
+                    <option value="NEWS">资讯</option>
+                    <option value="NOTICE">公告</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="time">封面</label>
+                <div class="out-border">
+                    <input type="file" class="fileLabel file-img" ngf-select="vm.uploadFile($file, $invalidFiles)" ng-model="vm.form.name"
+           name="{{vm.form.name}}" ngf-max-size="5MB" ngf-accept="'image/*'"/>
+                    <img class="sck" ng-src="{{imgs.lock}}" alt="">
+                    <img class="sck" ng-src="{{vm.name}}" alt="">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <!-- <textarea class="form-control"
+                          rows="20"
+                          ng-model="vm.form.content"
+                          placeholder="请输入公告内容"></textarea> -->
+                <!--style给定宽度可以影响编辑器的最终宽度-->
+                <script type="text/plain" id="myEditor" style="width: 100%; height: 340px"></script>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="vm.submit()">添加</button>
+        </form>
+    </div>
+</div>

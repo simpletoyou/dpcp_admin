@@ -1,0 +1,8 @@
+<div class="bn-wrap">
+    <p class="bn-items">
+        <span ng-repeat="item in vm.items">
+  		<a class="bn-item" href="#{{item.url?item.url:'javascript:void(0)'}}" ng-class="{ 'bn-item-url': !item.url }">{{item.name}}</a>
+  		<span ng-if="$index < vm.items.length-1" class="bn-line"> / </span>
+        </span>
+    </p>
+</div>

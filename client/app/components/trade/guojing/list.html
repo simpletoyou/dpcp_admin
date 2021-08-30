@@ -1,0 +1,73 @@
+<div class="module-trade">
+	<ol class="breadcrumb fn-clearfix">
+		<li>交易管理</li>
+		<li>国京出入金管理</li>
+	</ol>
+	<div class="panel panel-warning">
+		<div class="panel-body">
+			<form class="form-inline ui-form" role="form">
+				<div class="form-group ui-input-select">
+					<label for="record-uid" class="control-label f-12">用户搜索：</label>
+					<input type="text" class="form-control " placeholder="UID" ng-model="userSearch" id="record-uid">
+				</div>
+				<div class="form-group ui-input-select">
+						<label for="coinin-type" class="control-label f-12">币种选择：</label>
+						<select class="form-control" ng-model="vm.coinType" placeholder="请选择币种" ng-change="vm.changeCoinType(coinType)" id="coinin-type">
+								<option ng-bind:value="coin.value" ng-repeat="coin in coinList">{{coin.label}}</option>
+						</select>
+				</div>
+				<div class="form-group">
+					<label class="control-label f-12">日期：</label>
+					<input type="date" ng-model="beginTime" class="form-control w180" ng-change="vm.changeStartDate(beginTime)"> -
+					<input type="date" ng-model="endTime" class="form-control w180" ng-change="vm.changeEndDate(endTime)" ng-disabled="disabledEndDate"
+					  min="{{min}}">
+				</div>
+				<div class="form-group ui-input-select">
+					<button type="submit" class="btn btn-primary" ng-click="vm.fetchList()">搜索</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<div class="ui-box">
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th width="10%">UID</th>
+					<th width="15%">交易时间</th>
+					<th width="10%">币种</th>
+					<th width="15%">资金流向</th>
+					<th width="10%">数量</th>
+					<th width="10%">状态</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+					<td>{{item.winmaxUserId}}</td>
+					<td>{{$root.moment(item.tradeTime - 0).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+					<td>{{item.assetCode}}</td>
+					<td>{{item.tradeType == 'OUTGOLD' ? '交易所转到国际期货' : '国际期货转到交易所'}}</td>
+					<td>{{item.amount}}</td>
+					<td ng-class="{
+						greentradedetail:(item.tradeTypeInfo=='SUCCESS'),
+						redtradedetail:(item.tradeTypeInfo=='ERROR')}" >
+						{{vm.returnUserState(item.tradeTypeInfo)}}
+					</td>
+				</tr>
+				<tr class="ui-no-data" ng-if="vm.isLoading === false && (vm.list.length === 0||vm.list===null)">
+					<td colspan="9">暂无数据</td>
+				</tr>
+				<tr class="ui-loading" ng-if="vm.isLoading === true">
+					<td colspan="9">正在加载，请稍候...</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="ui-pager-box" ng-if="vm.totalNum > 0">
+			<ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" total-items="vm.totalNum" ng-model="vm.condition.pageNo"
+			  max-size="5" items-per-page="vm.pageSize || 10" align="right" class="pagination" boundary-links="true" ng-change="vm.pageChanged()"
+			  rotate="false"></ul>
+		</div>
+	</div>
+</div>

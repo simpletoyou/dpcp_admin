@@ -1,0 +1,54 @@
+{
+	"title": "用户",
+	"path": "/commonusers/commonusers",
+	"query": {
+		"url": "/user/userList",
+		"method": "post",
+		"params": [{
+			"type": "input",
+			"key": "userinput",
+	        "templateOptions": {
+	          "type": "text",
+	          "placeholder": "按类别搜索信息"
+	        }
+      },{
+		"type": "select",
+		"key": "userselect",
+		"templateOptions": {
+			"options": [{
+				"value": 0,
+				"name": "uid"
+			}, {
+				"value": 1,
+				"name": "手机号"
+			},{
+				"value": 2,
+				"name": "真实姓名"
+			}]
+			}
+	}]
+	},
+	"tableParams": {
+		"count": 30,
+		"sorting": { 
+			"uid": "asc" 
+		}
+	},
+	"list": [{
+		"name": "uid",
+		"key": "uid"
+	},{
+		"name": "手机",
+		"key": "mobile"
+	}, {
+		"name": "真实姓名（未认证为空）",
+		"key": "name"
+	}, {
+		"name": "注册时间",
+		"key": "createDate"
+	}, {
+		"name": "注册IP",
+		"key": "createip"
+	}
+	]
+}

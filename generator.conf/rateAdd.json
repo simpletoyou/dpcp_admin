@@ -1,0 +1,106 @@
+{
+	"title":"渠道及费率管理 >  机构费率 > 添加",
+	"path":"/organ/organFeeAdd22",
+	"query":{
+		"url":"/organ/organFeeAdd22",
+		"method":"post",
+		"params":[{
+			"key": "orgName",
+			"type": "select",
+		    "templateOptions": {
+				"label": "机构名称",
+				"options": [{
+					"value": 0,
+					"name": "块钱"
+				}]
+			}
+		},{
+			"key": "chlMerNo",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "商户号",
+		       "required": true
+		    }
+		},{
+			"key": "",
+			"type": "select",
+		    "templateOptions": {
+				"label": "接口名称",
+				"options": [{
+					"value": 0,
+					"name": "代付"
+				}]
+			}
+		,{
+			"key": "",
+			"type": "select",
+		    "templateOptions": {
+				"label": "接口类型",
+				"options": [{
+					"value": 0,
+					"name": "收款"
+				}，{
+					"value": 0,
+					"name": "收款"
+				}]
+			}
+		},{
+			"key": "",
+			"type": "select",
+		    "templateOptions": {
+				"label": "账户类型",
+				"options": [{
+					"value": 0,
+					"name": "人民币账户"
+				}, {
+					"value": 1,
+					"name": "GOP账户"
+				}]
+			}
+		},{
+			"key": "cardName",
+			"type": "checkbox",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "支持卡名称",
+		       "required": true
+		    }
+		},{
+			"key": "feeType",
+			"type": "checkbox",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "费率类型",
+		       "required": true
+		    }
+		},{
+			"key": "min",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "最小金额",
+		       "required": true
+		    }
+		},{
+			"key": "max",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "最大金额",
+		       "required": true
+		    }
+		},{
+			"key": "fee",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "费率",
+		       "required": true
+		    }
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    }
+}

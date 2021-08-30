@@ -1,0 +1,14 @@
+<div class="module-asset all-balance">
+    <ol class="breadcrumb fn-clearfix">
+        <li>KYC审核</li>
+        <li>地址审核</li>
+    </ol>
+    <ul class="tab-ul">
+        <li class="tab-li" ng-click="vm.toggleTab('current')" ui-sref=".addressCurrent" ng-class="{'tab-li--selected':vm.selectedBtn==='current'}">待审核</li>
+        <li class="tab-li" ng-click="vm.toggleTab('history')" ui-sref=".addressHistory" ng-class="{'tab-li--selected':vm.selectedBtn==='history'}">审核历史</li>
+    </ul>
+    <div data-ui-view="" >
+        <!--<address-current ng-if="vm.selectedBtn==='current'"></address-current>-->
+        <!--<address-history ng-if="vm.selectedBtn==='history'"></address-history>-->
+    </div>
+</div>

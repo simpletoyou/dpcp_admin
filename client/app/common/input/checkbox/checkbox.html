@@ -1,0 +1,12 @@
+<div class="zns_checkbox">
+    <ul class="zns_checkbox_ul">
+        <li
+                class="zns_checkbox_li"
+                ng-class="{active:item.bcheck}"
+                ng-repeat="item in vm.gycheckboxarr"
+                ng-click="vm.clickFN($index)"
+        >
+            {{item.key}}
+        </li>
+    </ul>
+</div>

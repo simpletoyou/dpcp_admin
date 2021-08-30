@@ -1,0 +1,183 @@
+@colorWhite: rgb(0, 0, 0);
+
+.commonheader {
+    display: block;
+}
+
+.header-logo-text {
+    display: inline-block;
+    height: 100%;
+    line-height: 50px;
+    text-indent: 20px;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+.header-logout {
+    display: inline-block;
+    color: rgb(255, 255, 255);
+    float: right;
+    margin-right: 80px;
+    margin-top: 13px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header {
+    position: fixed;
+    top: 0;
+    height: 50px;
+    width: 100%;
+    z-index: 2;
+    //overflow: hidden;
+    background-color: @colorWhite;
+    &-logout {
+        &-wrap {
+            width: 100%;
+            height: 50px;
+            background-color: @colorWhite;
+        }
+        &-logo {
+            margin-top: 15px;
+            margin-left: 5%;
+            float: left;
+            width: 110px;
+        }
+        &-ul {
+            list-style-type: none;
+            float: right;
+            vertical-align: middle;
+            margin-right: 25px;
+            display: block;
+            line-height: 40px;
+            font-size: 13px;
+        }
+        &-li {
+            display: inline;
+            padding-right: 45px;
+            & > a {
+                display: inline-block;
+                text-decoration: none;
+                color: #212121;
+                margin-top: 20px;
+                &:hover {
+                    color: #00c4d5;
+                    text-decoration: none;
+                }
+            }
+        }
+    }
+    &-loginlogout {
+        &-wrap {
+            background-color: @colorWhite;
+            width: 100%;
+            height: 50px;
+            margin: 0 auto;
+            position: relative;
+        }
+        &-ul {
+            list-style: none;
+            position: absolute;
+            right: 5%;
+            top: 35%;
+            width: 376px;
+        }
+        &-li {
+            line-height: 40px;
+            text-align: center;
+            position: relative;
+            float: left;
+            width: 186px;
+            z-index: 11;
+            background-color: @colorWhite;
+            &-ul {
+                width: 300px;
+                float: right;
+                background-color: @colorWhite;
+                margin-top: 13px;
+            }
+            &-img {
+                width: 74px;
+                height: 74px;
+                display: inline-block;
+                margin-top: 15px;
+            }
+            &-li {
+                text-align: center;
+                width: 100%;
+            }
+            &-account {
+                border: 1px solid;
+                height: 40px;
+                width: 120px;
+                display: inline-block;
+                border-radius: 20px;
+                margin-bottom: 15px;
+                text-decoration: none;
+                a.header-loginlogout-a:hover {
+                    color: #00c4d5;
+                    text-decoration: none;
+                }
+                a.header-loginlogout-a:visited {
+                    text-decoration: none;
+                }
+            }
+            &-quit {
+                position: absolute;
+                top: 50px;
+                right: 9px;
+                color: #00c4d5;
+            }
+            .bblogo {
+                display: inline-block;
+                position: absolute;
+                top: 35%;
+                left: 24%;
+                width: 12px;
+            }
+            .selectlogo {
+                display: inline-block;
+                position: absolute;
+                right: 0;
+                top: 18px;
+                width: 8px;
+            }
+        }
+        &-a {
+            text-decoration: none;
+            color: #000;
+            &:hover {
+                color: #00c4d5;
+                text-decoration: none;
+            }
+        }
+        &-logo {
+            width: 176px;
+            margin-left: 30px;
+            padding-top: 15px;
+        }
+    }
+
+    &-nav{
+        display: inline-block;
+        margin-left: 100px;
+        .nav-item{
+            display: inline-block;
+            margin-right: 24px;
+            font-size: 16px;
+            &-link{
+                color: #ffffff;
+                text-decoration: none;
+
+                &--active{
+                    color: #0b95ff;
+                    font-weight: bold;
+                }
+            }
+        }
+
+
+    }
+}
+
+

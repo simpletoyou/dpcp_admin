@@ -1,0 +1,43 @@
+<div class="panel-wrap">
+    <ol class="breadcrumb fn-clearfix">
+        <li>角色管理</li>
+        <li>权限管理</li>
+    </ol>
+    <div>
+        <span style="font-size: 16px;margin-bottom: 15px;display: inline-block;">当前配置角色：{{roleName}}</span>
+    </div>
+    <script type="text/ng-template" id="tree_renderer.html">
+        <div ui-tree-handle class="tree-node tree-node-content">
+            <a class="btn btn-success btn-xs" ng-if="node.menuRoleDtoList && node.menuRoleDtoList.length > 0" ng-click="toggle(this)"><span
+                    class="glyphicon"
+                    ng-class="{
+                              'glyphicon-chevron-right': collapsed,
+                              'glyphicon-chevron-down': !collapsed
+                            }">
+            </span></a>
+            <a ng-if="!node.menuRoleDtoList || node.menuRoleDtoList.length == 0" class="node-null"></a>
+            <input type="checkbox" class="node-select-checkbox" ng-click="vm.roleNodeSelect(node)" ng-model="node.hasChoose">
+            {{node.menuName}}
+            <!--<a class="pull-right btn btn-danger btn-xs" data-nodrag ng-click="remove(this)"><span-->
+                    <!--class="glyphicon glyphicon-remove"></span></a>-->
+            <!--<a class="pull-right btn btn-primary btn-xs" data-nodrag ng-click="newSubItem(this)" style="margin-right: 8px;"><span-->
+                    <!--class="glyphicon glyphicon-plus"></span></a>-->
+        </div>
+        <ol ui-tree-nodes ng-model="node.menuRoleDtoList" ng-class="{hidden: collapsed}">
+            <li ng-repeat="node in node.menuRoleDtoList" ui-tree-node ng-include="'tree_renderer.html'">
+            </li>
+        </ol>
+    </script>
+    <div>
+        <input type="checkbox" ng-model="chooseAll" id="chooseAllRolePerm" ng-click="vm.chooseAllPerm(permList)">
+        <label for="chooseAllRolePerm">选择全部权限</label>
+    </div>
+    <div>
+        <div ui-tree data-drag-enabled="false" style="width: 600px;">
+            <ol ui-tree-nodes ng-model="permList">
+                <li ng-repeat="node in permList" ui-tree-node ng-include="'tree_renderer.html'"></li>
+            </ol>
+        </div>
+    </div>
+    <button style="margin-left: 80px;" class="btn btn-primary" ng-click="vm.savePerm()">保存</button>
+</div>

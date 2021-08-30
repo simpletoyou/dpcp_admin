@@ -1,0 +1,30 @@
+<div class="module-notice module-notice-list">
+    <ol class="breadcrumb">
+        <li><a href="#/notice/list">公告</a></li>
+        <li class="active">添加公告</li>
+    </ol>
+    <div class="ui-box">
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">标题</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" maxlength="100"
+                       ng-model="vm.form.title"
+                       placeholder="请输入公告标题">
+            </div>
+            <div class="form-group">
+                <label for="time">时间</label>
+                <input type="text" id="time" maxlength="100" class="form-control"
+                       ng-model="vm.form.createTime "
+                       placeholder="请输入公告发布时间">
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <textarea class="form-control"
+                          rows="20"
+                          ng-model="vm.form.content"
+                          placeholder="请输入公告内容"></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="vm.submit()">添加</button>
+        </form>
+    </div>
+</div>

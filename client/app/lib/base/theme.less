@@ -1,0 +1,59 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/31
+ */
+
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    word-break: break-all;
+}
+
+.table > thead > tr > th {
+    padding: 15px 8px;
+}
+
+.table {
+    caption {
+        border-bottom: 1px #e6e6e6 solid;
+    }
+}
+
+body .modal-dialog {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: auto;
+    transform: translate(-50%, -50%);
+}
+
+.modal.in .modal-dialog {
+    -webkit-transition: inherit;
+    transition: inherit;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+.fade {
+    opacity: 0;
+    -webkit-transition: opacity .15s linear;
+    -o-transition: opacity .15s linear;
+    transition: opacity .15s linear;
+}
+
+.modal.fade .modal-dialog {
+    //-webkit-transition: inherit;
+    //-o-transition: inherit;
+    //transition: inherit;
+    //-webkit-transform: inherit;
+    //-ms-transform: inherit;
+    //-o-transform: inherit;
+    //transform: inherit;
+}
+
+.breadcrumb {
+    font-size: 14px;
+}
+
+select {
+    min-width: 100px;
+}

@@ -1,0 +1,97 @@
+{
+	"title": "商户信息",
+	"path": "/mercinfo/list",
+	"query": {
+		"url": "/merManager/merList",
+		"method": "post",
+		"params": [{
+			"key": "startDateStr",
+			"type": "calendar",
+      "templateOptions": {
+        "label": "生效时间"
+      }
+		}, {
+			"key": "endDateStr",
+			"type": "calendar",
+      "templateOptions": {
+        "label": "至"
+      }
+		},{
+			"key": "email",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "账号",
+        "placeholder": "注册邮箱"
+      }
+		}, {
+			"key": "merchantId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商户编号",
+        "placeholder": ""
+      }
+		}, {
+			"key": "contractor",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商务人员",
+        "placeholder": ""
+      }
+		}]
+	},
+	"tableParams": {
+		"count": 5,
+		"sorting": { 
+			"refundId": "asc" 
+		},
+		"filter": { 
+			"refundId": 1 
+		} 
+	},
+	"list": [{
+		"name": "商户编号",
+		"key": "merchantId"
+	}, {
+		"name": "公司名称",
+		"key": "merName"
+	}, {
+		"name": "应用个数",
+		"key": "appNums"
+	},{
+		"name": "合同生效时间",
+		"key": "startTime"
+	}, {
+		"name": "所属商务人员",
+		"key": "contractor"
+	},{
+		"name": "商务联系方式",
+		"key": "contractorTelNo"
+	},{
+		"name": "审核状态",
+		"key": "status"
+	},{
+		"name": "拒绝理由",
+		"key": "checkInfo"
+	},{
+		"name": "操作",
+		"content": [{
+			"type": "link",
+			"name": "详情",
+			"url": "/agree?id={{item.refundId}}"
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "reject",
+			"url": "/reject",
+			"params": [{
+				"key": "refundId"
+			}, {
+				"key": "userId",
+				"value": "as2342138jkjaslkjlk"
+			}]
+		}]
+	}]
+}

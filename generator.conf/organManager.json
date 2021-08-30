@@ -1,0 +1,44 @@
+{
+	"title":"机构及费率管理 > 机构管理",
+	"path":"/organ/organList",
+	"query":{
+		"url":"/organ/organList",
+		"method":"post",
+		"params":[{
+			"key": "addOrgan",
+			"type": "click",
+		    "templateOptions": {
+		       "type": "button",
+		       "label": "添加机构"
+		    }
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    },
+	"list":[{"name":"序号",
+			"key":""},{
+			"name":"机构编码",
+			"key":"type"},{
+			"name":"机构名称",
+			"key":"typeName"},{
+			"name":"结算账号",
+			"key":"rate"},{
+			"name":"结算银行账户",
+			"key":"minCharge"},{
+			"name":"状态",
+			"key":"status"},{
+			"name":"备注",
+			"key":"checkInfo"},{
+			"name":"操作",
+			"content": [{
+				"type": "link",
+				"name": "修改",
+				"url": "/organ/organUpdate?id={{item.id}}"
+			},{
+				"type": "link",
+				"name": "审核",
+				"url": "/organ/organVerify121?id={{item.id}}"
+			}]
+	}]
+}

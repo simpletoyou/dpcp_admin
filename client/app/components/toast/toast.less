@@ -1,0 +1,35 @@
+/**
+ * toast样式
+ */
+
+.toast {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    line-height: 18px;
+    z-index: 9999;
+    font-size: 14px;
+    background-color: rgba(0, 0, 0, 0.8);
+    border-radius: 4px;
+    color: #fff;
+    text-align: center;
+    padding: 14px 15px;
+    -webkit-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+    opacity: 0;
+    white-space: nowrap;
+    &.show {
+        -webkit-transition: .25s linear;
+        transition: .25s linear;
+        -webkit-transform: translate3d(-50%, 0, 0);
+        transform: translate3d(-50%, 0, 0);
+        opacity: 1;
+    }
+    .hide {
+        -webkit-transition: .25s linear;
+        transition: .25s linear;
+        -webkit-transform: translate3d(-50%, -15%, 0);
+        transform: translate3d(-50%, -15%, 0);
+        opacity: 0;
+    }
+}

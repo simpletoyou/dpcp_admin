@@ -1,0 +1,58 @@
+<div class="module-account-login-info">
+    <ol class="breadcrumb fn-clearfix">
+    	<li>控制面板</li>
+        <li>登录信息</li>
+    </ol>
+    
+	<div class="ui-box">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th width="25%">时间</th>
+                <th width="25%">类型</th>
+                <th width="25%">IP</th>
+                <th width="25%">地点</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in vm.list" ng-if="vm.loading === false && vm.list.length > 0">
+                <td>{{$root.moment(item.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+                <td>
+                    <span ng-if="item.operType === 'LOGIN'">登入</span>
+                    <span ng-if="item.operType === 'LOGOUT'">登出</span>
+                </td>
+                <td>
+                    <span>{{item.ipAddress}}</span>
+                </td>
+                <td>
+                    <span>{{item.ipCity}}</span>
+                    <span>{{item.ipCountry}}</span>
+                </td>
+            </tr>
+            <tr class="ui-no-data" ng-if="vm.loading === false && (vm.list.length === 0||vm.list===null)">
+                <td colspan="4">暂无数据</td>
+            </tr>
+            <tr class="ui-loading" ng-if="vm.loading === true">
+                <td colspan="4">正在加载，请稍候...</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ui-pager-box" v-if="vm.condition.pageNum > 0">
+            <ul uib-pagination
+                previous-text="上一页"
+                next-text="下一页"
+                first-text="首页"
+                last-text="尾页"
+                total-items="vm.totalNum"
+                ng-model="vm.condition.pageNo"
+                max-size="5"
+                items-per-page="vm.condition.pageSize || 10"
+                align="right"
+                class="pagination"
+                boundary-links="true"
+                ng-change="vm._fetchLoginLog()"
+                rotate="false"></ul>
+        </div>
+    </div>
+</div>

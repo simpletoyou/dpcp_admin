@@ -1,0 +1,82 @@
+<div class="module-c2c">
+    <ol class="breadcrumb fn-clearfix">
+        <li>c2c / 售卖广告配置</li>
+    </ol>
+    <div class="module-ad-param">
+        <div class="ui-box">
+
+            <div class="ad-form-dialog">
+                <div class="col-row">
+                    <span class="col-label">支持的交易币种：</span>
+                    <span class="col-text">BTC/ACT/USC</span>
+                    <span class="col-opt">
+                        <a href="javascript:;" ng-click="vm.isAddCoin = true" ng-if="vm.isAddCoin === false">增加币种</a>
+                        <a href="javascript:;" ng-click="vm.isAddCoin = false" ng-if="vm.isAddCoin === true">取消</a>
+                    </span>
+                </div>
+
+                <div class="add-box" ng-if="vm.isAddCoin === true">
+                    <p>增加的交易币种</p>
+                    <p>
+                        <label class="box-label">aaa</label>
+                        <input class="box-text" type="checkbox">
+                    </p>
+                    <p>
+                       <a href="javascript:;" ng-click="vm.addCoin()">确定</a>
+                    </p>
+                </div>
+            </div>
+
+
+            <div class="ad-form-dialog">
+                <div class="col-row">
+                    <span class="col-label">支持的国家：</span>
+                    <!--<span class="col-text">{{vm.detail.payNo}}</span>-->
+                    <span class="col-text"></span>
+                    <span class="col-opt">
+                        <a href="javascript:;" ng-click="vm.isAddCountry = true" ng-if="vm.isAddCountry === false">增加国家</a>
+                        <a href="javascript:;" ng-click="vm.isAddCountry = false" ng-if="vm.isAddCountry === true">取消</a>
+                    </span>
+                </div>
+                <div class="col-row">
+                    <span class="col-label">支持的国家电话区号 ：</span>
+                    <!--<span class="col-text">{{vm.detail.payNo}}</span>-->
+                    <span class="col-text"></span>
+                </div>
+                <div class="col-row">
+                    <span class="col-label">支持的币种：</span>
+                    <!--<span class="col-text">{{vm.detail.payNo}}</span>-->
+                    <span class="col-text"></span>
+                </div>
+
+
+                <div class="add-box" ng-if="vm.isAddCountry === true">
+                    <p>
+                        <label class="box-lable">增加的国家</label>
+                        <select class="box-text" name="">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                    </p>
+                    <p>
+                        <label class="box-lable">国家电话区号</label>
+                        <input class="box-text" type="text">
+                    </p>
+                    <p>
+                        <label class="box-lable">增加的币种</label>
+                        <select class="box-text" name="">
+                            <option value=""></option>
+                            <option value=""></option>
+                            <option value=""></option>
+                        </select>
+                    </p>
+                    <p>
+                        <a href="javascript:;" ng-click="vm.addCountry()">确定</a>
+                    </p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,7 @@
+<div class="zns_radio">
+    <p ng-repeat="item in vm.radioList" ng-click="vm.clickFN($index)">
+        <span class="radio_title" ng-class="{on:item.bcheck}">
+        </span>
+        <span class="radio_con">{{item.key}}</span>
+    </p>
+</div>

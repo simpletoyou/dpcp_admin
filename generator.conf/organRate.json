@@ -1,0 +1,53 @@
+{
+	"title":"机构及费率管理 > 机构费率",
+	"path":"/organ/organFeeList",
+	"query":{
+		"url":"/organ/organFeeList",
+		"method":"post",
+		"params":[{
+			"key": "addRate",
+			"type": "click",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "添加费率"
+		    }
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    },
+	"list":[{"name":"序号",
+			 "key":""},
+			{"name":"机构名称",
+			 "key":"orgName"},
+			{"name":"商户号",
+			 "key":"chlMerNo"},
+			{"name":"接口",
+			 "key":"itfTypeName"},
+			{"name":"卡类型",
+			 "key":"cardType"},
+			{"name":"支持卡名称",
+			 "key":"cardTypeName"},
+			{"name":"费率类型",
+			 "key":"feeType"},
+			{"name":"状态",
+			 "key":"state"},
+			{"name":"备注",
+			 "key":"resv"},
+			{"name":"操作",
+			 "content": [{
+					"type": "link",
+					"name": "修改",
+					"url": "/organ/organFeeAdd22?id={{item.id}}"
+				},{
+					"type": "link",
+					"name": "审核",
+					"url": "/organ/organFeeAdd44?id={{item.id}}"
+				},{
+					"type": "link",
+					"name": "详情",
+					"url": "/organ/organFeeAdd?id={{item.id}}"
+				}]
+			}
+	]
+}

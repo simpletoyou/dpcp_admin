@@ -1,0 +1,23 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/27
+ */
+.module-notice-list1 .link {
+  margin-right: 5px;
+}
+.module-notice-list1 .link:last-child {
+  margin-right: 0;
+}
+.module-notice-list1 .out-border {
+  width: 150px;
+  height: 150px;
+  position: relative;
+}
+.module-notice-list1 .sck {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 150px;
+  height: 150px;
+}

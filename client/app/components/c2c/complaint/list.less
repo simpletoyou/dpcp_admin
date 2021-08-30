@@ -1,0 +1,46 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/27
+ */
+
+
+.module-complaint{
+
+    >.form-group{
+        width: 200px;
+    }
+    .td-ellipsis{
+        overflow: hidden;
+        text-overflow:ellipsis;
+        white-space: nowrap;
+    }
+    .tab-ul{
+        border-bottom: 1px solid #eaeaea;
+        font-size: 0;
+        .tab-li{
+            transform: translate(0,2px);
+            font-size: 14px;
+            display: inline-block;
+            border-radius: 4px;
+            padding:12px 16px;
+            &:hover{
+                background-color: #fafafb;
+                cursor: pointer;
+            }
+
+            &--selected{
+                border-bottom: 2px solid #fff;
+                cursor: alias;
+
+                border-top:1px solid  #eaeaea;
+                border-left:1px solid  #eaeaea;
+                border-right: 1px solid #eaeaea;
+                &:hover{
+                    background-color: #fff;
+                    cursor: inherit;
+                }
+            }
+        }
+    }
+}

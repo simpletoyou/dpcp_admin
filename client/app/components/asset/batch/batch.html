@@ -1,0 +1,17 @@
+<div class="module-asset batch">
+    <ol class="breadcrumb fn-clearfix">
+        <li>对账系统</li>
+        <li>对账批次表</li>
+    </ol>
+
+    <uib-tabset active="activeForm">
+        <uib-tab index="0" heading="人民币" ng-click="vm.toggleTab('CNY')">
+            <batch-cny  ng-if="vm.selectedBtn=='CNY'"></batch-cny>
+        </uib-tab>
+
+        <uib-tab index="1" heading="GOP" ng-click="vm.toggleTab('GOP')">
+            <batch-gop  ng-if="vm.selectedBtn=='GOP'"></batch-gop>
+        </uib-tab>
+    </uib-tabset>
+
+</div>

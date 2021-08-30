@@ -1,0 +1,89 @@
+{
+	"title": "退款列表",
+	"path": "/refund/list",
+	"query": {
+		"url": "/refund/list",
+		"method": "get",
+		"params": [{
+			"key": "refundId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "退款单号",
+        "placeholder": "输入退款单号"
+      }
+		},
+		{
+			"key": "refundTime",
+			"type": "calendar",
+      "templateOptions": {
+        "label": "退款时间"
+      }
+		}, {
+			"type": "select",
+			"key": "refundType",
+			"templateOptions": {
+				"label": "交易类型",
+				"options": [{
+					"value": 0,
+					"name": "全部"
+				}, {
+					"value": 1,
+					"name": "主动退款"
+				}]
+			}
+		}, {
+			"type": "select",
+			"key": "from",
+			"templateOptions": {
+				"label": "交易来源",
+				"options": {
+					"url": "/from",
+					"method": "get",
+					"params": [{
+						"key": "refundId"
+					}, {
+						"key": "userId",
+						"value": "as2342138jkjaslkjlk"
+					}]
+				}
+			}
+		}]
+	},
+	"tableParams": {
+		"count": 5,
+		"sorting": { 
+			"refundId": "asc" 
+		},
+		"filter": { 
+			"refundId": 1 
+		} 
+	},
+	"list": [{
+		"name": "退款单号",
+		"key": "refundId"
+	}, {
+		"name": "退款时间",
+		"key": "refundTime"
+	}, {
+		"name": "操作",
+		"content": [{
+			"type": "link",
+			"name": "通过",
+			"url": "/agree?id={{item.refundId}}"
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "reject",
+			"url": "/reject",
+			"method": "post",
+			"params": [{
+				"key": "refundId"
+			}, {
+				"key": "userId",
+				"value": "as2342138jkjaslkjlk"
+			}]
+		}]
+	}]
+
+}

@@ -1,0 +1,116 @@
+<div class="module-c2c-complaint-detail">
+    <ol class="breadcrumb fn-clearfix">
+        <li>c2c / 金牌卖家设置 / 详情</li>
+    </ol>
+
+    <h3 class="detail-title">基本信息</h3>
+    <div class="detail-form-dialog">
+        <div class="col-row">
+            <span class="col-label">申诉时间：</span>
+            <span class="col-text">{{$root.moment(vm.detail.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD
+                HH:mm:ss')}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">申诉编号：</span>
+            <span class="col-text">{{vm.detail.complainId}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">申诉类型：</span>
+            <span class="col-text">{{vm.config.TRADE_TYPE[vm.detail.complainType]}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">申诉原因：</span>
+            <span class="col-text">{{vm.detail.complainReason}}</span>
+        </div>
+
+        <div class="col-row">
+            <span class="col-label">备注：</span>
+            <span class="col-text">{{vm.detail.remark}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">买家联系方式：</span>
+            <span class="col-text">{{vm.detail.buyPhone}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">卖家联系方式：</span>
+            <span class="col-text">{{vm.detail.sellPhone}}</span>
+        </div>
+    </div>
+
+
+    <h3 class="detail-title">付款证明</h3>
+    <div class="detail-form-dialog">
+        <div class="col-row">
+            <span class="col-label">付款方式：</span>
+            <span class="col-text">{{vm.config.PAY_TYPE[vm.detail.payType]}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">交易流水号：</span>
+            <span class="col-text">{{vm.detail.payNo}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">付款截图：</span>
+            <div class="col-img">
+                <a href="{{vm.capture.length>0?'/exchange_manager/common/photo?name='+vm.capture[0]:'javascript:;'}}"
+                    target="_blank">
+                    <img ng-src="{{vm.capture.length>0?'/exchange_manager/common/photo?name='+vm.capture[0]:''}}">
+                </a>
+            </div>
+        </div>
+    </div>
+
+
+    <h3 class="detail-title">订单信息</h3>
+    <div class="detail-form-dialog">
+        <div class="col-row">
+            <span class="col-label">订单号：</span>
+            <span class="col-text">{{vm.detail.transOrderId}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">交易币种/类别：</span>
+            <span class="col-text">
+                {{vm.detail.assetCode}}
+                <template ng-if="vm.detail.complainType === 'BUY'">买入</template>
+                <template ng-if="vm.detail.complainType === 'SELL'">卖出</template>
+            </span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">交易金额：</span>
+            <span class="col-text">{{vm.detail.money}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">交易数量：</span>
+            <span class="col-text">{{vm.detail.number}}</span>
+        </div>
+        <div class="col-row">
+            <span class="col-label">收款方式：</span>
+            <span class="col-text">{{vm.detail.transPayType}}</span>
+
+        </div>
+        <div class="col-row">
+            <span class="col-label">收款账号：</span>
+
+            <span class="col-text"
+                ng-if="vm.detail.transPayType == 'BANK'">{{vm.detail.c2cBasePayChannelDto.name}}</span>
+            <span class="col-text"
+                ng-if="vm.detail.transPayType == 'BANK'">{{vm.detail.c2cBasePayChannelDto.bank}}</span>
+            <span class="col-text"
+                ng-if="vm.detail.transPayType == 'BANK'">{{vm.detail.c2cBasePayChannelDto.subBank}}</span>
+            <span class="col-text"
+                ng-if="vm.detail.transPayType == 'BANK'">{{vm.detail.c2cBasePayChannelDto.acnumber}}</span>
+
+            <span class="col-text"
+                ng-if="vm.detail.transPayType == 'ALIPAY'">{{vm.detail.c2cBasePayChannelDto.name}}</span>
+            <span class="col-text"
+                ng-if="vm.detail.transPayType == 'ALIPAY'">{{vm.detail.c2cBasePayChannelDto.alipayNo}}</span>
+
+        </div>
+    </div>
+
+    <div class="btns-group">
+        <button class="btn" onclick="history.go(-1)">返回</button>
+        <!-- <button class="btn" ng-click="vm.transforForce()" ng-if="vm.detail.complainType === 'BUY' && vm.detail.transOrderStatus !== 'FINISHED' && vm.detail.transOrderStatus !== 'CANCELED' && vm.detail.transOrderStatus !== 'OVERTIME'">强制打币</button>
+        <button class="btn" ng-click="vm.closeForce()" ng-if="vm.detail.complainType === 'SELL' && vm.detail.transOrderStatus !== 'FINISHED' && vm.detail.transOrderStatus !== 'CANCELED' && vm.detail.transOrderStatus !== 'OVERTIME'">强制关闭订单</button> -->
+    </div>
+
+</div>

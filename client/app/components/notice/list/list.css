@@ -1,0 +1,19 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/27
+ */
+.module-notice-list .link {
+  margin-right: 5px;
+}
+.module-notice-list .link:last-child {
+  margin-right: 0;
+}
+.module-notice-list .imgTag {
+  height: 40px;
+  width: auto;
+}
+.module-notice-list .serach {
+  display: flex;
+  align-items: flex-end;
+}

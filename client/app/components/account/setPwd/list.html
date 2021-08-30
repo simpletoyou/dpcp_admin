@@ -1,0 +1,42 @@
+<div class="module-account-set-pwd">
+    <ol class="breadcrumb fn-clearfix">
+    	<li>控制面板</li>
+        <li>密码管理</li>
+    </ol>
+    
+	<div class="ui-box">
+        <form class="ui-form" role="form">
+            <div class="form-group form-inline">
+                <label class="form-label">原密码</label>
+                <input type="password"
+                       class="form-control "
+                       ng-model="vm.oldPwd"
+                       style="width: 300px;">
+            </div>
+            <div class="form-group form-inline">
+                <label class="form-label">新密码</label>
+                <input type="password"
+                       class="form-control"
+                       ng-focus="vm.newPwdErrTip = '' "
+                       ng-model="vm.newPwd"
+                       style="width: 300px;">
+                <span class="form-error-tip">{{vm.newPwdErrTip}}</span>
+            </div>
+            <div class="form-group form-inline">
+                <label class="form-label">确认新密码</label>
+                <input type="password"
+                       class="form-control"
+                       ng-model="vm.confirmPwd"
+                       style="width: 300px;">
+                <span class="form-error-tip" ng-if="vm.confirmPwd !== '' && vm.confirmPwd !== vm.newPwd">两次输入新密码不一致</span>
+            </div>
+            <div class="form-group ui-input-select">
+                <button type="submit"
+                        style="width: 300px;"
+                        ng-disabled="vm.oldPwd === '' || vm.newPwd === '' || vm.confirmPwd === '' || (vm.confirmPwd !== '' && vm.confirmPwd !== vm.newPwd)"
+                        class="btn btn-primary form-btn"
+                        ng-click="vm.changePassword()">确定</button>
+            </div>
+        </form>
+    </div>
+</div>

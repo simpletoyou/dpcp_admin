@@ -1,0 +1,153 @@
+<div class="commonusers panel-wrap">
+    <ol class="breadcrumb fn-clearfix">
+        <li>用户信息</li>
+    </ol>
+    <div class="panel panel-warning">
+        <div class="panel-body">
+            <form class="form-inline ui-form" role="form">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="按类别搜索信息" ng-model="searchkeyWordText">
+                    <select class="form-control" ng-model="searchkeyWord">
+                        <option value="uid">UID</option>
+                        <option value="account">邮箱</option>
+                        <option value="fullname">姓名</option>
+                    </select>
+                    <label for="commonuserdate">日期</label>
+                    <input id="commonuserdate" class="form-control" ng-change="vm.changeStartDate(startDate)" type="date"
+                        ng-model="startDate">-<input min="{{min}}" class="form-control" type="date" ng-model="endDate">
+                    <!-- <button
+                        type="submit"
+                        class="btn btn-primary"
+                        ng-click="vm.fetchList()"
+                        ng-click="vm.searchInfo(item.uid)"
+                    >搜索</button> -->
+                    <button type="submit" class="btn btn-primary" ng-click="vm.getUserList()">搜索</button>
+                    <!--<button type="submit" class="btn btn-primary" ng-click="vm.searchInfo()">搜索</button>-->
+                </div>
+            </form>
+        </div>
+        <div class="ui-box">
+            <div class="body-title">用户列表</div>
+            <table class="table table-striped table-bordered table-hover asset-table">
+                <thead>
+                    <tr>
+                        <th width="12%">时间</th>
+                        <th width="7%">UID</th>
+                        <th width="18%">邮箱</th>
+                        <th width="10%">姓名</th>
+                        <th width="10%">手机号码</th>
+                        <th width="7%">实名情况</th>
+                        <th width="7%">会员等级</th>
+                        <th width="7%">C2C等级</th>
+                        <th width="7%">状态</th>
+                        <th width="10%">操作</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in userList">
+                        <td>{{vm.returnCreateDate(item.createDate)}}</td>
+                        <td>{{item.uid}}</td>
+                        <td>{{item.email}}</td>
+                        <td>{{item.fullname}}</td>
+                        <td>{{item.mobile}}</td>
+                        <td>{{vm.returnUserLevel(item.authLevel)}}</td>
+                        <td ng-class="{
+                            graytradedetail:(item.vipMember=='INIT'),
+                            greentradedetail:(item.vipMember=='VIP2'),
+                            redtradedetail:(item.vipMember=='VIP1'),
+                            orangetradedetail:(item.vipMember=='VIP3')}">
+                            {{item.vipMember == 'INIT' ? '普通用户' : item.vipMember == 'VIP1' ? '合伙人' : item.vipMember ==
+                            'SUPER_NODE' ? '超级节点' : ''}}
+                        </td>
+                        <td ng-class="{
+                            graytradedetail:(item.c2cMember=='INITING'),
+                            greentradedetail:(item.c2cMember=='VIP2'),
+                            redtradedetail:(item.c2cMember=='VIP3'),
+                            orangetradedetail:(item.c2cMember=='VIP1')}">
+                            {{item.c2cMember == 'INITING' ? '普通用户' : item.c2cMember == 'VIP1' ? 'V1级会员' : item.c2cMember ==
+                            'VIP2' ? 'V2级会员' : 'V3级会员'}}
+                        </td>
+                        <td ng-class="{
+                            greentradedetail:(item.loingStatus=='0' || item.loingStatus== null),
+                            redtradedetail:(item.loingStatus=='1'),}">
+                            {{item.loingStatus == '1' ? '禁止登陆' : '正常'}}
+                        </td>
+                        <td>
+                            <a href="javascript:;" ng-click="vm.userDetail(item)">详情</a><br/>
+                            <a ng-if="item.vipMember != 'INIT'" href="javascript:;" ng-click="vm.setVip(item,'INIT')">设为普通用户<br/>
+                            <a ng-if="item.vipMember != 'VIP1'" href="javascript:;" ng-click="vm.setVip(item,'VIP1')">设为合伙人<br/></a>
+                            <a ng-if="item.vipMember != 'SUPER_NODE'" href="javascript:;" ng-click="vm.setVip(item,'SUPER_NODE')">设为超级节点<br/></a>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!--分页-->
+        <div class="ui-pager-box" ng-if="totalNum>0">
+            <span>共 {{totalNum}} 条数据</span>
+            <ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" total-items="totalNum"
+                ng-model="vm.pageNo" max-size="5" items-per-page="pageSize || 10" align="right" class="pagination"
+                boundary-links="true" ng-change="vm.pageChanged(vm.pageNo)" rotate="false"></ul>
+        </div>
+        <div class="search-history">
+            <!--<p> 最近搜索  <span ng-click="vm.clearSearchHistoryList()">清除搜索记录</span></p>-->
+
+            <!--<ul>-->
+            <!--<li ng-repeat="item in searchHistoryList track by $index">-->
+            <!--<a href="javascript:;" ng-click="vm.gotoPage(item.searchUrl)">{{  item.value }}</a>-->
+            <!--</li>-->
+            <!--</ul>-->
+        </div>
+    </div>
+    <!-- <div class="ui-box">
+        <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+                <th width="5%">UID</th>
+                <th width="15%">邮箱</th>
+                <th width="20%">真实姓名（未认证为空）</th>
+                <th width="8%">证件类型</th>
+                <th width="20%">证件号码 </th>
+                <th width="12%">注册时间</th>
+                <th width="10%">注册IP</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+                <td><a href="javascript:;" ng-click="vm.searchInfo(item.uid)">{{item['uid']}}</a></td>
+                <td>{{item['email']}}</td>
+                <td>{{item['name']}}</td>
+                <td><span ng-if="item['cardType']==='PASSPORT'">护照</span>
+                    <span ng-if="item['cardType']==='ID_CARD'">身份证</span>
+                </td>
+                <td>{{item['cardNo']}}</td>
+                <td>{{$root.moment(item.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+                <td>{{item['ip']}}</td>
+            </tr>
+            <tr class="ui-no-data" ng-if="vm.isLoading === false && (vm.list.length === 0||vm.list===null)">
+                <td colspan="7">暂无数据</td>
+            </tr>
+            <tr class="ui-loading" ng-if="vm.isLoading === true">
+                <td colspan="7">正在加载，请稍候...</td>
+            </tr>
+            </tbody>
+        </table>
+        <div class="ui-pager-box" v-if="vm.totalNum > 0">
+            <ul uib-pagination
+                previous-text="上一页"
+                next-text="下一页"
+                first-text="首页"
+                last-text="尾页"
+                total-items="vm.totalNum"
+                ng-model="vm.condition.pageNo"
+                max-size="5"
+                items-per-page="vm.condition.pageSize || 10"
+                align="right"
+                class="pagination"
+                boundary-links="true"
+                ng-change="vm.pageChanged()"
+                rotate="false"></ul>
+        </div>
+    </div> -->
+</div>

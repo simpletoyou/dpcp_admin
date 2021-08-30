@@ -1,0 +1,288 @@
+<div class="panel-wrap module-personalinfo">
+    <ol class="breadcrumb fn-clearfix">
+        <li>用户信息</li>
+        <!-- <li><a href="#/commonusers/commonusers">用户列表</a></li> -->
+        <li>用户详情</li>
+    </ol>
+    <div class="ui-box" style="margin-bottom: 20px;">
+        <div class="body-title">基本信息</div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">用户名</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text" ng-if="vm.data.userInfoDto.authLevel === 'LEVEL0'">暂无</span>
+                <span class="text"
+                    ng-if="vm.data.userInfoDto.authLevel === 'LEVEL1' || vm.data.userInfoDto.authLevel === 'LEVEL2'">{{
+                    vm.data.userIdentification.fullName }} </span>
+            </div>
+            <div class="col-md-5">
+                <a href="javascript:;" ng-click="vm.showDialog()">操作</a>
+                <a href="javascript:;" ng-click="vm.openGoogleAuth()">重置谷歌验证</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">UID</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text">{{ vm.data.userInfoDto.uid }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">等级</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text">{{ vm.data.userInfoDto.authLevel }}</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">状态</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text">正常</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">注册时间</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text">
+                    {{$root.moment(vm.data.userInfoDto.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD')}}
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">注册IP</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text">{{ vm.data.userInfoDto.createip }}</span>
+            </div>
+        </div>
+    </div>
+    <div class="ui-box" style="margin-bottom: 20px;">
+        <div class="body-title">
+            <span class="text">实名信息</span>(
+            <span class="text" ng-if="vm.data.userInfoDto.authLevel === 'LEVEL0'">未实名-LEVEL0</span>
+            <span class="text" ng-if="vm.data.userInfoDto.authLevel === 'LEVEL1'">初级实名-LEVEL1</span>
+            <span class="text" ng-if="vm.data.userInfoDto.authLevel === 'LEVEL2'">高级实名-LEVEL2</span>)
+            <!--<span class="text">实名信息</span> (-->
+            <!--<span class="text" ng-if="!vm.data.userIdentification.cardHandhold && !vm.data.userIdentification.cardPhoto && !vm.data.userResidence.residencePhoto ">未实名 </span>-->
+            <!--<span class="text" ng-if="vm.data.userIdentification.cardHandhold && vm.data.userIdentification.cardPhoto">初级实名 </span>-->
+            <!--<span class="text" ng-if="vm.data.userResidence.residencePhoto">高级实名 </span> )-->
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">真实姓名</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text">{{ vm.data.userIdentification.fullName }} </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">证件类型</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text" ng-if="vm.data.userIdentification.cardType==='PASSPORT'">护照</span>
+                <span class="text" ng-if="vm.data.userIdentification.cardType==='ID_CARD'">身份证</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">证件号码</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text">{{vm.data.userIdentification.cardNo}} </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">证件有效期</span>
+            </div>
+            <div class="col-md-2">
+                <span class="text" ng-if="!vm.data.userIdentification.expiredDate">暂无</span>
+                <span class="text"
+                    ng-if="vm.data.userIdentification.expiredDate">{{
+                    $root.moment(vm.data.userIdentification.expiredDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD')}}
+                </span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">初级实名</span>
+            </div>
+            <div class="col-md-10" style="line-height: 25px;">
+                <div class="col-md-1" style="display: inline-block;" ng-if="vm.data.userIdentification.cardPhoto">
+                    <img class="zhengjian-bg" ng-src={{vm.zhengjianBG}}
+                        ng-click="vm.showImg('userIdentification','cardPhoto')">
+                    <span class="text">正面</span>
+                </div>
+                <div class="col-md-2" style="display: inline-block;" ng-if="!vm.data.userIdentification.cardPhoto">
+                    <span class="text">暂无正面照片</span>
+                </div>
+                <div class="col-md-1" style="display: inline-block;" ng-if="vm.data.userIdentification.cardBack">
+                    <img class="zhengjian-bg" ng-src={{vm.zhengjianBG}}
+                        ng-click="vm.showImg('userIdentification','cardBack')">
+                    <span class="text">反面</span>
+                </div>
+                <div class="col-md-2" style="display: inline-block;" ng-if="!vm.data.userIdentification.cardBack">
+                    <span class="text">暂无反面照片</span>
+                </div>
+                <div class="col-md-1" style="display: inline-block;" ng-if="vm.data.userIdentification.cardHandhold">
+                    <img class="zhengjian-bg" ng-src={{vm.zhengjianBG}}
+                        ng-click="vm.showImg('userIdentification','cardHandhold')">
+                    <span class="text">手持</span>
+                </div>
+                <div class="col-md-2" style="display: inline-block;" ng-if="!vm.data.userIdentification.cardHandhold">
+                    <span class="text">暂无手持照片</span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-1">
+                <span class="text">高级实名</span>
+            </div>
+            <div class="col-md-10">
+                <div class="col-md-1" style="display: inline-block;"
+                    ng-for="item in vm.data.userResidence.residencePhoto"
+                    ng-if="vm.data.userResidence.residencePhoto.length">
+                    <img class="zhengjian-bg" ng-src={{vm.zhengjianBG}}
+                        ng-click="vm.showImg('userIdentification', 'residencePhoto')">
+                </div>
+                <div class="col-md-2" style="display: inline-block;"
+                    ng-if="!vm.data.userResidence.residencePhoto.length">
+                    <span class="text">暂无照片</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="ui-box" style="margin-bottom: 20px;">
+        <div class="body-title">用户资产</div>
+        <table class="table table-striped table-bordered table-hover asset-table" ng-repeat="arr in vm.assets">
+            <thead>
+                <tr>
+                    <th>币种</th>
+                    <th>总计</th>
+                    <th>可用</th>
+                    <th>冻结</th>
+                    <th>锁仓</th>
+                    <th>锁仓可用</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in arr">
+                    <td>{{item.assetCode}}</td>
+                    <td>{{item.amountAvailable + item.amountLock}}</td>
+                    <td>{{item.amountAvailable}}</td>
+                    <td>{{item.amountLock}}</td>
+                    <td>{{item.amountLocking}}</td>
+                    <td>{{item.amountLockingAvailable}}</td>
+                    <td>
+                        <span>币种交易：</span>
+                        <span ng-class="{
+                            greentradedetail:item.transactionStatus== 0,
+                            redtradedetail:item.transactionStatus== 1}">
+                            {{item.transactionStatus == 0 ? '正常' : '已禁止交易'}}
+                        </span>
+                        &emsp;
+                        <span>币种提现：</span>
+                        <span ng-class="{
+                            greentradedetail:item.putforwardStatus== 0,
+                            redtradedetail:item.putforwardStatus== 1}">
+                            {{item.putforwardStatus == 0 ? '正常' : '已禁止提现'}}
+                        </span>&emsp;
+                        <a href="javascript:;" ng-click="vm.showAssetsDialog(item)">资产来源</a>
+                    </td>
+                    <td>
+                        <a href="javascript:;" ng-class="{
+                            greentradedetail:item.transactionStatus== 0,
+                            redtradedetail:item.transactionStatus== 1}"
+                            ng-click="vm.createUpCurrencyFreezing(item,'transactionStatus')">
+                            {{item.transactionStatus == 0 ? '禁止交易' : '开放交易'}}
+                        </a>
+                        &emsp;
+                        <a href="javascript:;" ng-class="{
+                            greentradedetail:item.putforwardStatus== 0,
+                            redtradedetail:item.putforwardStatus== 1}"
+                            ng-click="vm.createUpCurrencyFreezing(item,'putforwardStatus')">
+                            {{item.putforwardStatus == 0 ? '禁止提现' : '开放提现'}}
+                        </a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ui-box" style="margin-bottom: 20px;">
+        <div class="body-title">实名审核</div>
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th width="20%">时间</th>
+                    <th width="10%">类型</th>
+                    <th width="10%">审核状态</th>
+                    <th width="20%">审核者</th>
+                    <th width="30%">备注</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.data.userIdentifications track by $index">
+                    <td>
+                        {{ $root.moment(item.updateDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss') }}
+                    </td>
+                    <td>
+                        初级实名
+                    </td>
+                    <td>
+                        {{ item.auditStatus === 'INIT' ? '提交审核中' : item.auditStatus === 'OK' ? '成功' : item.auditStatus
+                        === 'FAIL' ? '失败' : '' }}
+                    </td>
+                    <td>
+                        {{item.auditUid}}
+                    </td>
+                    <td>
+                        {{item.auditMessage ? item.auditMessage : '暂无'}}
+                    </td>
+                </tr>
+                <tr ng-repeat="item in vm.data.userResidences track by $index">
+                    <td>
+                        {{ $root.moment(item.updateDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss') }}
+                    </td>
+                    <td>
+                        高级实名
+                    </td>
+                    <td>
+                        {{ item.auditStatus === 'INIT' ? '提交审核中' : item.auditStatus === 'OK' ? '成功' : item.auditStatus
+                        === 'FAIL' ? '失败' : '' }}
+                    </td>
+                    <td>
+                        {{item.auditUid}}
+                    </td>
+                    <td>
+                        {{item.auditMessage ? item.auditMessage : '暂无'}}
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="ui-box">
+        <div class="body-title">矿机赠送IEP</div>
+        <div class="row">
+            <div class="col-md-2">
+                <input type="text" ng-model="vm.iepNum" class="form-control " placeholder="请输入赠送IEP数量">
+            </div>
+            <button type="button" class="btn  btn-primary" ng-click="vm.giftFinanceIEP()">赠送</button>
+        </div>
+    </div>
+</div>
+<div class="img-dialog-warp" ng-if="vm.imgDialogIsShow" ng-click="vm.closeImg();$event.stopPropagation();">
+    <div class="img-dialog-innerbox" id="imgMovs">
+        <img id="imgMov" ng-src="{{vm.imgDialogSrc}}" ondragstart="return false;" alt="">
+    </div>
+</div>

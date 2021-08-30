@@ -1,0 +1,81 @@
+.zns_select {
+    width: 100px;
+    height: 30px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    position: relative;
+    background: white;
+}
+
+.zns_select p {
+    height: 30px;
+    line-height: 30px;
+    text-align: center;
+    margin: 0;
+    position: relative;
+    padding-right: 6px;
+    cursor: pointer;
+}
+
+.zns_select p .zns_em {
+    display: inline-block;
+    position: absolute;
+    top: 13px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border-bottom: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-top: 5px solid grey;
+}
+
+.zns_select p .down {
+    top: 12px;
+    right: 13px;
+    border-top: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-left: 5px solid transparent;
+    border-bottom: 5px solid #00c4d5;
+}
+
+.zns_select ul {
+    position: absolute;
+    left: 0;
+    top: 45px;
+    background: #fff;
+    width: 118px;
+    display: none;
+    border: 1px solid #e3e3e3;
+}
+
+.zns_select ul li {
+    height: 60px;
+    line-height: 60px;
+    text-align: center;
+    border-bottom: 1px solid #e3e3e3;
+}
+
+.zns_select ul li:nth-last-child(1) {
+    border-bottom: transparent;
+}
+
+.zns_select ul li:hover {
+    background: #fcfefe;
+    color: #00c4d5;
+}
+
+// 下拉框不可用状态 没有下拉数据选项
+.nzns_select {
+    border: 1px solid #999999;
+}
+
+.nzns_select p .zns_em {
+    border-top: 5px solid #999999
+}
+
+.zns_select .selectulshow {
+    display: block;
+    z-index: 10000;
+    cursor: pointer;
+}

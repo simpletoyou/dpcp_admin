@@ -1,0 +1,175 @@
+<div class="assetview">
+    <br>
+    <div class="assetview-pannel">
+        <div class="assetview-basicinfo">
+            <ul class="list">
+                <li class="list-item">
+                    <span class="item-title">券商名称：</span>
+                    <span class="item-text">{{vm.basicInfo.brokerName}}</span>
+                </li>
+                <li class="list-item">
+                    <span class="item-title">账号：</span>
+                    <span>{{vm.basicInfo.brokerNo}}</span>
+                </li>
+                <li class="list-item">
+                    <span class="item-title">注册时间：</span>
+                    <span>{{$root.moment(vm.basicInfo.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</span>
+                </li>
+            </ul>
+        </div>
+        <h5 style="margin-bottom: 15px;">账户资金状态</h5>
+        <div class="panel panel-warning">
+            <div class="panel-body">
+                <form class="form-inline ui-form" role="form">
+                    <div class="form-group ui-input-select">
+                        <input type="text"
+                               class="form-control"
+                               ng-model="vm.condition.uid"
+                               style="width: 300px;"
+                               placeholder="输入uid">
+                        <button type="submit"  class="btn btn-primary" ng-click="vm.queryFinance()">搜索</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="well" ng-if="vm.isNoData === false && vm.list.length > 0">
+            <ul class="list">
+                <li class="item" ng-if="vm.isLoading === false" ng-repeat="item in vm.list">
+                    <div class="row" ng-repeat="subItem in $root.$coinList">
+                        <div class="col-md-2" ng-if="$index === 0">
+                            <span class="text">账户UID：{{item.uid}}</span>
+                        </div>
+                        <div class="col-md-2" ng-if="$index !== 0">
+                            <span class="text">&nbsp;</span>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text">{{subItem.value}}余额：{{item[subItem.value].availiable}}</span>
+                        </div>
+                        <div class="col-md-3">
+                            <span class="text">{{subItem.value}}冻结：{{item[subItem.value].lock}}</span>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="well" ng-if="vm.isNoData === true">
+            <ul class="list">
+                <li class="item">
+                    <div class="row" style="text-align: center">
+                        <span class="text">暂无数据</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!--<table class="table table-striped table-hover">-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>账户UID</th>-->
+                <!--<th>BTC余额</th>-->
+                <!--<th>BTC冻结</th>-->
+                <!--<th>ETH余额</th>-->
+                <!--<th>ETH冻结</th>-->
+                <!--<th>LTC余额</th>-->
+                <!--<th>LTC冻结</th>-->
+                <!--<th>ACT余额</th>-->
+                <!--<th>ACT冻结</th>-->
+                <!--<th>USC余额</th>-->
+                <!--<th>USC冻结</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr ng-if="vm.isLoading === false" ng-repeat="item in vm.list">-->
+                <!--<td>{{item.uid}}</td>-->
+                <!--<td>{{item.BTC.amountAvailable}}</td>-->
+                <!--<td>{{item.BTC.lock}}</td>-->
+                <!--<td>{{item.ETH.amountAvailable}}</td>-->
+                <!--<td>{{item.ETH.lock}}</td>-->
+                <!--<td>{{item.LTC.amountAvailable}}</td>-->
+                <!--<td>{{item.LTC.lock}}</td>-->
+                <!--<td>{{item.ACT.amountAvailable}}</td>-->
+                <!--<td>{{item.ACT.lock}}</td>-->
+                <!--<td>{{item.USC.amountAvailable}}</td>-->
+                <!--<td>{{item.USC.lock}}</td>-->
+            <!--</tr>-->
+            <!--<tr class="ui-loading" ng-if="vm.isLoading === true">-->
+                <!--<td colspan="11">正在加载，请稍候...</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+        <!--<div class="ui-pager-box" v-if="vm.totalNum > 0">-->
+            <!--<ul uib-pagination-->
+                <!--previous-text="上一页"-->
+                <!--next-text="下一页"-->
+                <!--first-text="首页"-->
+                <!--last-text="尾页"-->
+                <!--total-items="vm.totalNum"-->
+                <!--ng-model="vm.condition.pageNo"-->
+                <!--max-size="30"-->
+                <!--items-per-page="vm.condition.pageSize || 10"-->
+                <!--align="right"-->
+                <!--class="pagination"-->
+                <!--boundary-links="true"-->
+                <!--ng-change="vm.queryFinance()"-->
+                <!--rotate="false"></ul>-->
+        <!--</div>-->
+    </div>
+
+    <br><br>
+
+
+    <!--<div class="assetview-pannel">-->
+        <!--<h5>账户挂单状态</h5>-->
+        <!--<table class="table table-striped table-hover">-->
+            <!--<thead>-->
+            <!--<tr>-->
+                <!--<th>挂单总量</th>-->
+                <!--<th>进行中挂单</th>-->
+                <!--<th>已完成挂单</th>-->
+            <!--</tr>-->
+            <!--</thead>-->
+            <!--<tbody>-->
+            <!--<tr ng-if="vm.isLoading === false">-->
+                <!--<td>{{vm.total}}</td>-->
+                <!--<td>{{vm.untraded}}</td>-->
+                <!--<td>{{vm.traded}}</td>-->
+            <!--</tr>-->
+            <!--<tr class="ui-loading" ng-if="vm.isLoading === true">-->
+                <!--<td colspan="3">正在加载，请稍候...</td>-->
+            <!--</tr>-->
+            <!--</tbody>-->
+        <!--</table>-->
+    <!--</div>-->
+
+
+    <!--<div class="assetview-money">-->
+    <!--<div class="assetview-money-title">-->
+    <!--<span>账户资金状态</span>-->
+    <!--<span style="float: right;cursor: pointer;" ng-click="vm.getData()">刷新</span>-->
+    <!--</div>-->
+
+    <!--<div class="assetview-money-body">-->
+    <!--<span class="body-first">人民币余额：</span>-->
+    <!--<span class="body-second">{{vm.cnyBalance | numPoint2}}</span>-->
+    <!--<span class="body-first">人民币冻结：</span>-->
+    <!--<span class="body-second">{{vm.cnyLock | numPoint2}}</span>-->
+    <!--<span class="body-first">果仁余额：</span>-->
+    <!--<span class="body-second">{{vm.gopBalance | numPoint2}}</span>-->
+    <!--<span class="body-first">果仁冻结：</span>-->
+    <!--<span class="body-second">{{vm.gopLock | numPoint2}}</span>-->
+    <!--</div>-->
+    <!--</div>-->
+    <!--<div class="assetview-bill">-->
+    <!--<div class="assetview-bill-title">账户挂单状态</div>-->
+    <!--<div class="assetview-bill-body">-->
+    <!--<span class="body-first">挂单总量：</span>-->
+    <!--<span>{{vm.total}}</span>-->
+    <!--<span class="body-second">笔</span>-->
+    <!--<span class="body-first">进行中挂单：</span>-->
+    <!--<span>{{vm.untraded}}</span>-->
+    <!--<span class="body-second">笔</span>-->
+    <!--<span class="body-first">已完成挂单：</span>-->
+    <!--<span>{{vm.traded}}</span>-->
+    <!--<span class="body-second">笔</span>-->
+    <!--</div>-->
+    <!--</div>-->
+</div>

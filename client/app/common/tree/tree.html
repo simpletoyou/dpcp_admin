@@ -1,0 +1,8 @@
+<ul class="menu-container">
+
+    <li class="menu-item" ng-repeat="item in vm.menuList" ng-if="item.isInUrlArr">
+        <a ng-href="#{{item.url}}"
+           ng-class="{'item-link--active':item.url === vm.path || (item.pattern && item.pattern.test(vm.path))}"
+           class="item-link">{{item.title}}</a>
+    </li>
+</ul>

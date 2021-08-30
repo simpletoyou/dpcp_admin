@@ -1,0 +1,44 @@
+<div class="module-pass-dialog">
+    <form class="form-horizontal">
+        <div class="modal-header">
+            <h4>温馨提示</h4>
+        </div>
+        <div class="modal-body">
+            <div class="alert alert-warning" role="alert">
+                <div class="title">拒绝</div>
+            </div>
+            <div class="form-group">
+                <label for="refusecode" class="col-sm-3 control-label">拒绝理由</label>
+                <div class="col-sm-8">
+                    <select id="refusecode" class="form-control" ng-model="$$refuseCode">
+                        <option ng-repeat="option in $$refuseOptions"
+                        value="{{option.VALUE}}">{{option.LABEL}}</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="refusetext" class="col-sm-3 control-label">其他理由</label>
+                <div class="col-sm-8">
+                    <textarea id="refusetext" class="form-control"
+                    ng-model="$$refuseText"
+                    placeholder="请输入其他理由"
+                    ng-disabled="$$refuseCode !== '30000'"></textarea>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="password" class="col-sm-3 control-label">当前账号密码</label>
+                <div class="col-sm-8">
+                    <input type="password"
+                            class="form-control"
+                            ng-model="$$password"
+                            id="password"
+                            placeholder="请输入当前账号密码">
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" ng-click="$$cancel()">取消</button>
+            <button type="submit" class="btn btn-primary" ng-click="$$refuse($$password, $$refuseCode, $$refuseText)" data-ng-disabled="!$$password || (!$$refuseCode && !$$refuseText)">{{dialogName}}</button>
+        </div>
+    </form>
+</div>

@@ -1,0 +1,72 @@
+{
+	"title": "账户管理",
+	"path": "/mercacc/list",
+	"query": {
+		"url": "/merAcc/list",
+		"method": "get",
+		"params": [{
+			"key": "merchantId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商户编号",
+        "placeholder": ""
+      }
+		}]
+	},
+	"tableParams": {
+		"count": 5,
+		"sorting": { 
+			"refundId": "asc" 
+		},
+		"filter": { 
+			"refundId": 1 
+		} 
+	},
+	"list": [{
+		"name": "商户编号",
+		"key": "merchantId"
+	},{
+		"name": "账户可用余额",
+		"key": "cashTotalAmount"
+	}, {
+		"name": "待清算金额",
+		"key": "clearTotalAmount"
+	}, {
+		"name": "代付款金额",
+		"key": "prepayTotalAmount"
+	}, {
+		"name": "待退款金额",
+		"key": "refundTotalAmount"
+	},{
+		"name": "保证金",
+		"key": "securityTotalAmount"
+	},{
+		"name": "备付金",
+		"key": "imprestTotalAmount"
+	},{
+		"name": "备付金可用余额",
+		"key": "imprestAvailableAmount"
+	},{
+		"name": "审核状态",
+		"key": "verifyCode"
+	},{
+		"name": "操作",
+		"content": [{
+			"type": "link",
+			"name": "详情",
+			"url": "/agree?id={{item.refundId}}"
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "reject",
+			"url": "/reject",
+			"params": [{
+				"key": "refundId"
+			}, {
+				"key": "userId",
+				"value": "as2342138jkjaslkjlk"
+			}]
+		}]
+	}]
+}

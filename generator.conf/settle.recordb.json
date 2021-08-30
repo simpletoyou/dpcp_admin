@@ -1,0 +1,153 @@
+{
+    "title": "结算记录",
+    "path": "/settleManager/settleEnd",
+    "query": {
+        "url": "/settleManager/settleEnd",
+        "method": "get",
+        "params": [
+            {
+            	"key": "dispensingOrderNo",
+                "type": "input",
+                "templateOptions": {
+                    "type": "text",
+                    "label": "付款订单号"
+                }
+         
+            },{
+                "key":"payBnkCode",
+                "type": "select",
+                "templateOptions":{
+                    "label":"付款通道",
+                    "options":[
+                        {"name":"","value":""},
+                        {"name":"","value":""},
+                        {"name":"","value":""},
+                        {"name":"","value":""}
+                    ]
+                }
+            },{
+                "key":"payBnkEntryWayNO",
+                "type": "select",
+                "templateOptions":{
+                    "label":"付款方式",
+                    "options":[
+                        {"name":"","value":"2"},
+                        {"name":"","value":"2"},
+                        {"name":"","value":"2"},
+                        {"name":"","value":"2"}
+                    ]
+                }
+            },{
+                "key":"cardType",
+                "type": "select",
+                "templateOptions":{
+                    "label":"收款卡类型",
+                    "options":[
+                        {"name":"1","value":"对公"},
+                        {"name":"2","value":"借记卡"},
+                        {"name":"3","value":"贷记卡"}
+                    ]
+                }
+            },{
+                "key":"currType",
+                "type": "select",
+                "templateOptions":{
+                    "label":"币种",
+                    "options":[
+                        {"name":"CNY","value":"人民币"},
+                        {"name":"GOP","value":"果仁币"}
+                    ]
+                }
+            },{
+                "key":"aplOprId",
+                "type": "select",
+                "templateOptions":{
+                    "label":"操作员A",
+                    "options":[
+                        {"name":"","value":""},
+                        {"name":"","value":""},
+                        {"name":"","value":""},
+                        {"name":"","value":""}
+                    ]
+                }
+            },{
+                "key":"chkOprId",
+                "type": "select",
+                "templateOptions":{
+                    "label":"操作员B",
+                    "options":[
+                        {"name":"","value":""},
+                        {"name":"","value":""},
+                        {"name":"","value":""},
+                        {"name":"","value":""}
+                    ]
+                }
+            }
+        ]
+    },
+    "tableParams": {
+       "count":10
+    },
+    "list": [
+        {
+            "name": "创建时间",
+            "key": "createTime"
+        },
+        {
+            "name":"结算时间",
+            "key":"payTime"
+        },
+        {
+            "name": "付款订单号",
+            "key": "wdcNo"
+        },
+        {
+            "name": "商户编号",
+            "key": "usrId"
+        },
+        {
+            "name": "结算状态",
+            "key": "ordrSts"
+        },
+        {
+            "name": "付款渠道",
+            "key": "payBnkName"
+        },
+        {
+            "name":"付款方式",
+            "key":"payBnkEntryWayName"
+        },
+        {
+            "name": "收款姓名",
+            "key": "cardNm"
+        },
+        {
+            "name": "收款银行",
+            "key": "cardNo"
+        },
+        {
+            "name": "收款卡类型",
+            "key": "cardType"
+        },
+        {
+            "name": "币种",
+            "key": "currType"
+        },
+        {
+            "name": "应结算金额",
+            "key": "factAmt"
+        },
+        {
+            "name": "手续费",
+            "key": "fee"
+        },
+        {
+            "name": "操作员A",
+            "key": "chkOprId"
+        },
+        {
+            "name": "操作",
+            "key": "checkInfo"
+        }
+    ]
+}

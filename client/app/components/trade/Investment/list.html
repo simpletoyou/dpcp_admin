@@ -1,0 +1,63 @@
+<div class="module-trade">
+    <ol class="breadcrumb fn-clearfix">
+        <li>用户投入VDS列表</li>
+    </ol>
+
+    <div class="panel panel-warning">
+        <div class="panel-body">
+            <form class="form-inline ui-form" role="form">
+                <div class="form-group ui-input-select">
+                    <label for="record-uid" class="control-label f-12">节点ID：</label>
+                    <input type="text" class="form-control " placeholder="ID" ng-model="vm.id" id="record-uid">
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" ng-click="vm.fetchList()">搜索</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="ui-box">
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>分配订单号</th>
+                    <th>节点ID</th>
+                    <th>用户</th>
+                    <th>投入数量</th>
+                    <th>返还状态</th>
+                    <th>分配时间</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+                    <td>{{item.id}}</td>
+                    <td>{{item.orderId}}</td>
+                    <td>{{item.investNode}}</td>
+                    <td>{{item.uid}}</td>
+                    <td>{{item.investNum}} / 10000</td>
+                    <td ng-class="{
+                        graytradedetail:item.allocateStatus=='INIT',
+                        greentradedetail:item.backStatus=='YES',
+                        redtradedetail:item.backStatus=='NO'}">
+                        {{item.backStatus == 'INIT' ? '预分配 未到账' : item.backStatus == 'YES' ? '返还成功' :'未返还'}}
+                    </td>
+                    <td>{{item.createTime}}</td>
+                </tr>
+                <tr class="ui-no-data" ng-if="vm.isLoading === false && (vm.list.length === 0||vm.list===null)">
+                    <td colspan="13">暂无数据</td>
+                </tr>
+                <tr class="ui-loading" ng-if="vm.isLoading === true">
+                    <td colspan="13">正在加载，请稍候...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="ui-pager-box" ng-if="vm.totalNum > 0">
+            <ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"
+                total-items="vm.totalNum" ng-model="vm.condition.pageNo" max-size="5" items-per-page="vm.pageSize || 10"
+                align="right" class="pagination" boundary-links="true" ng-change="vm.pageChanged()" rotate="false"></ul>
+        </div>
+    </div>
+</div>

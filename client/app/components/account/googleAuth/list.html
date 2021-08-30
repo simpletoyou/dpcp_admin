@@ -1,0 +1,38 @@
+<div class="module-account-google-auth">
+    <ol class="breadcrumb fn-clearfix">
+    	<li>控制面板</li>
+        <li>谷歌验证</li>
+    </ol>
+    
+	<div class="ui-box" ng-if="vm.boundGoogle === false">
+        <form class="ui-form" role="form">
+            <div class="form-group form-inline">
+                <label class="form-label">谷歌秘钥</label>
+                <span class="form-text">{{vm.secretcode}}</span>
+
+                <div class="qrcode-icon glyphicon glyphicon-qrcode">
+                    <div id="googleCode"></div>
+                </div>
+            </div>
+
+            <div class="form-group form-inline">
+                <label class="form-label">验证码</label>
+                <input type="text"
+                       class="form-control"
+                       ng-model="vm.googleCode"
+                       style="width: 300px;">
+            </div>
+            <div class="form-group ui-input-select">
+                <button type="submit"
+                        style="width: 300px;"
+                        class="btn btn-primary form-btn"
+                        ng-click="vm.bindGoogleAuth()">确定</button>
+            </div>
+        </form>
+    </div>
+
+
+    <div class="ui-box" ng-if="vm.boundGoogle === true">
+        当前已经绑定谷歌验证，若有风险，请联系管理员重置谷歌验证
+    </div>
+</div>

@@ -1,0 +1,69 @@
+<div class="module-trade">
+	<ol class="breadcrumb fn-clearfix">
+		<li>交易管理</li>
+		<li>国京账户出入金管理</li>
+	</ol>
+	<div class="panel panel-warning">
+		<div class="panel-body">
+			<form class="form-inline ui-form" role="form">
+				<div class="form-group ui-input-select">
+					<label for="record-uid" class="control-label f-12">用户搜索：</label>
+					<input type="text" class="form-control " placeholder="UID" ng-model="userSearch" id="record-uid">
+				</div>
+				<div class="form-group ui-input-select">
+					<button type="button" class="btn btn-primary" ng-click="vm.fetchList()">搜索</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<div class="ui-box">
+		<table class="table table-striped table-bordered table-hover asset-table" style="font-size: 14px;">
+			<thead>
+				<tr>
+					<th width="10%">UID</th>
+					<th width="10%">绑定账户</th>
+					<th width="10%">绑定时间</th>
+					<th width="15%">账户状态</th>
+					<th width="10%">操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+					<td>{{item.winmaxUserId}}</td>
+					<td>{{item.userName}}</td>
+					<td>{{$root.moment(item.crateTime - 0).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+					<td>
+						<span ng-class="{
+							greentradedetail:(item.lockStatus=='UNLOCK'),
+							redtradedetail:(item.lockStatus=='LOCK')}" >
+							{{item.lockStatus == "LOCK" ? '已冻结交易所转入国际期货金' : '交易所转入国际期货正常'}}
+						</span>
+						<span ng-class="{
+							greentradedetail:(item.outLockStatus=='UNLOCK'),
+							redtradedetail:(item.outLockStatus=='LOCK')}"  style="margin-left: 12px">
+							{{item.outLockStatus == "LOCK" ? '已冻结国际期货转出交易所' : '国际期货转出交易所正常'}}
+						</span>
+					</td>
+					<td>
+						<a href="javascript:;" ng-click="vm.setFrozen(item,'lockStatus')">{{item.lockStatus == "LOCK" ? '解除转入冻结' : '转入冻结'}}</a>
+						<a style="margin-left: 12px" href="javascript:;" ng-click="vm.setFrozen(item,'outLockStatus')">{{item.outLockStatus == "LOCK" ? '解除转出冻结' : '转出冻结'}}</a>
+					</td>
+				</tr>
+				<tr class="ui-no-data" ng-if="vm.isLoading === false && (vm.list.length === 0||vm.list===null)">
+					<td colspan="9">暂无数据</td>
+				</tr>
+				<tr class="ui-loading" ng-if="vm.isLoading === true">
+					<td colspan="9">正在加载，请稍候...</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="ui-pager-box" ng-if="vm.totalNum > 0">
+			<ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" total-items="vm.totalNum" ng-model="vm.condition.pageNo"
+			  max-size="5" items-per-page="vm.pageSize || 10" align="right" class="pagination" boundary-links="true" ng-change="vm.pageChanged()"
+			  rotate="false"></ul>
+		</div>
+	</div>
+</div>

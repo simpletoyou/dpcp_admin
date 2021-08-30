@@ -1,0 +1,76 @@
+<div class="all-balance-list kyc-address">
+    <div class="panel panel-warning">
+        <div class="panel-body">
+            <form class="form-inline ui-form" role="form">
+                <div class="form-group ui-input-select">
+                    <input type="text" class="form-control" ng-model="vm.keyWordVal" placeholder="按类别搜索信息">
+                    <select class="form-control" ng-model="vm.keyWord">
+                        <option value="uid">UID</option>
+                        <option value="email">邮箱</option>
+                    </select>
+                    <button type="submit" class="btn btn-primary" ng-click="vm.fetchList()">查询</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped table-hover">
+        <thead>
+            <tr>
+                <!-- <th width="20%">提交时间</th>
+                <th width="10%" class="border-right">用户ID</th>
+                <th width="15%">姓名</th>
+                <th width="15%">审核状态</th>
+                <th width="15%">首次提交</th>
+                <th width="15%">操作</th> -->
+                <th width="15%">提交时间</th>
+                <th width="10%" class="border-right">账户名</th>
+                <th width="5%">UID</th>
+                <th width="5%">类型</th>
+                <th width="10%">姓名</th>
+                <th width="10%">证件类型</th>
+                <th width="15%">证件图片</th>
+                <th width="10%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+                <td>{{$root.moment(item.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+                <td class="border-right"> {{item.email || '暂无数据'}}</td>
+                <td>{{item.uid}}</td>
+                <td>高级认证</td>
+                <td>{{item.fullName}}</td>
+                <td>
+                    <span class="text" ng-if="item.paperType == 0">地址</span>
+                </td>
+                <td>
+                    <img 
+                        class="zhengjian-bg" 
+                        ng-src={{vm.zhengjianBG}} 
+                        ng-click="vm.showImg(item.residencePhoto && item.residencePhoto.length ? item.residencePhoto[0] : '')"
+                    >
+                </td>
+                <td>
+                    <a href="javascript:;" ng-click="vm.passDialog(item.auditStatus, item.id)">通过</a>
+                    <a href="javascript:;" ng-click="vm.rejectDialog(item.auditStatus, item.id)">拒绝</a>
+                </td>
+                <!-- <td>
+                    <a ng-click="vm.gotoOpt(item.id,'operate')" style="cursor: pointer">操作</a>
+                </td> -->
+            </tr>
+            <tr class="ui-no-data" ng-if="vm.isLoading === false && (!vm.list||vm.list.length === 0)">
+                <td colspan="12">暂无数据</td>
+            </tr>
+            <tr class="ui-loading" ng-if="vm.isLoading === true">
+                <td colspan="12">正在加载，请稍候...</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="ui-pager-box" v-if="vm.totalNum > 0">
+        <ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" total-items="vm.totalNum" ng-model="vm.condition.pageNo" max-size="5" items-per-page="vm.condition.pageSize || 10" align="right" class="pagination" boundary-links="true" ng-change="vm.pageChanged()" rotate="false"></ul>
+    </div>
+</div>
+<div class="img-dialog-warp" ng-if="vm.imgDialogIsShow" ng-click="vm.closeImg(); $event.stopPropagation();">
+    <div class="img-dialog-innerbox" id="imgMovs">
+        <img id="imgMov" ng-src="{{vm.imgDialogSrc}}" ondragstart="return false;" alt="">
+    </div>
+</div>

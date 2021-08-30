@@ -1,0 +1,113 @@
+<div class="module-gop">
+    <ol class="breadcrumb fn-clearfix">
+        <li>资产管理</li>
+        <!-- <li>{{vm.coinType.toUpperCase()}}</li> -->
+        <li>Deposit 充值记录</li>
+    </ol>
+    <div class="panel panel-warning">
+        <div class="panel-body">
+            <form class="form-inline ui-form" role="form">
+                <div class="form-group ui-input-select">
+                    <label for="coinin-type" class="control-label f-12">币种选择：</label>
+                    <select class="form-control" ng-model="coinType" ng-change="vm.changeCoinType(coinType)" id="coinin-type">
+                        <option ng-bind:value="coin.value" ng-repeat="coin in coinList">{{coin.label}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="control-label f-12">日期选择：</label>
+                    <input type="date" ng-model="beginTime" class="form-control w180" ng-change="vm.changeStartDate(beginTime)">
+                    -
+                    <input type="date" ng-model="endTime" class="form-control w180" ng-change="vm.changeEndDate(endTime)"
+                    ng-disabled="disabledEndDate"
+                    min="{{min}}">
+                    <!-- <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div> -->
+                </div>
+                <!-- <div class="form-group ui-input-select">
+                    <label for="coinin-id" class="control-label f-12">ID：</label>
+                    <input type="text" class="form-control " placeholder="请输入id" ng-model="id" id="coinin-id">
+                </div> -->
+                <div class="form-group ui-input-select">
+                    <label for="coinin-uid" class="control-label f-12">搜索条件：</label>
+                    <input type="text" class="form-control " placeholder="请输入uid、邮箱" ng-model="uId" id="coinin-uid">
+                </div>
+                <!--<div class="form-group ui-input-select">-->
+                    <!--<label for="coinin-email" class="control-label f-12">邮箱：</label>-->
+                    <!--<input type="text" class="form-control " placeholder="请输入email" ng-model="email" id="coinin-email">-->
+                <!--</div>-->
+                <div class="form-group ui-input-select">
+                    <label for="coinin-address" class="control-label f-12">地址：</label>
+                    <input type="text" class="form-control " placeholder="请输入钱包地址" ng-model="address" id="coinin-address">
+                    <button type="submit"  class="btn btn-primary" ng-click="vm.fetchList()">搜索</button>
+                </div>
+                <!-- <div class="form-group ui-input-select">
+                    <label for="coinin-status" class="control-label f-12">状态：</label>
+                    <select class="form-control" ng-model="status" ng-change="vm.changeCoinType(coinType)" id="coinin-status">
+                        <option value="all">全部</option>
+                        <option value="success">提现成功</option>
+                        <option value="fail">提现失败</option>
+                    </select>
+
+                </div> -->
+            </form>
+        </div>
+    </div>
+
+    <div class="ui-box">
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+            <tr>
+                <th width="12%">提交时间</th>
+                <!-- <th width="5%">ID</th> -->
+                <th width="5%">UID</th>
+                <th width="47%">钱包地址</th>
+                <th width="5%">币种</th>
+                <th width="8%">数量</th>
+                <th width="8%">状态</th>
+                <th width="15%">附言</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+                <td>{{$root.moment(item.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+                <!-- <td>{{item.id}}</td> -->
+                <td ng-click="vm.searchInfo(item.uid)"><a href="javascript:void(0)">{{item.uid}}</a></td>
+                <td>{{item.address}}</td>
+                <td>{{coinType}}</td>
+                <td>{{item.amount}}</td>
+                <td ng-class="{
+                    orangetradedetail:(item.status=='WAITING'|| item.status=='PROCESSING'),
+                    greentradedetail:(item.status=='SUCCESS'),
+                    purpletradedetail:(item.status=='FAILURE'),
+                    redtradedetail:(item.status=='REFUSE'),
+                    graytradedetail:(item.status=='CANCEL')}" >
+                    {{item.status | gopInStatus}}
+                </td>
+                <td>{{item.msg}}</td>
+            </tr>
+            <tr class="ui-no-data" ng-if="vm.isLoading === false && (vm.list.length === 0||vm.list===null)">
+                <td colspan="7">暂无数据</td>
+            </tr>
+            <tr class="ui-loading" ng-if="vm.isLoading === true">
+                <td colspan="7">正在加载，请稍候...</td>
+            </tr>
+            </tbody>
+        </table>
+
+        <div class="ui-pager-box" ng-if="vm.totalNum > 0">
+            <ul uib-pagination
+                previous-text="上一页"
+                next-text="下一页"
+                first-text="首页"
+                last-text="尾页"
+                total-items="vm.totalNum"
+                ng-model="vm.condition.pageNo"
+                max-size="5"
+                items-per-page="vm.pageSize || 10"
+                align="right"
+                class="pagination"
+                boundary-links="true"
+                ng-change="vm.pageChanged()"
+                rotate="false"></ul>
+        </div>
+    </div>
+</div>

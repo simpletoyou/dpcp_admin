@@ -1,0 +1,87 @@
+<div class="module-trade">
+    <ol class="breadcrumb fn-clearfix">
+        <li>用户管理</li>
+        <li>C2C代理管理</li>
+    </ol>
+    <div class="panel panel-warning">
+        <div class="panel-body">
+            <form class="form-inline ui-form" role="form">
+                <div class="form-group ui-input-select">
+                    <label for="symbol-type" class="control-label f-12">状态：</label>
+                    <select class="form-control" ng-model="vm.condition.status">
+                        <option value="{{symbol.value}}" ng-repeat="symbol in statusList">{{symbol.label}}</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary" ng-click="vm.getUserInfo()">搜索</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="ui-box">
+        <table class="table table-striped table-hover table-bordered">
+            <thead>
+                <tr>
+                    <th width="8%">申请时间</th>
+                    <th width="5%">申请用户</th>
+                    <th width="5%">申请等级</th>
+                    <th width="8%">手机号</th>
+                    <th width="5%">打币数量</th>
+                    <th width="20%">打币地址</th>
+                    <th width="8%">更新时间</th>
+                    <th width="15%">备注</th>
+                    <th width="8%">状态</th>
+                    <th width="8%">操作</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+                    <td>{{$root.moment(item.createDate - 0).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+                    <td>{{item.uid}}</td>
+                    <td ng-class="{
+                        graytradedetail:(item.profileKey=='VIP1'),
+                        greentradedetail:(item.profileKey=='VIP2'),
+                        redtradedetail:(item.profileKey=='VIP3')
+                        }">
+                        {{item.profileKey == 'VIP1' ? 'V1级代理' : item.profileKey == 'VIP2' ? 'V2级代理' : 'V3级代理'}}
+                    </td>
+                    <td>{{item.dataType}}</td>
+                    <td>{{item.dataNum}}</td>
+                    <td>{{item.dataAddr}}</td>
+                    <td ng-if="item.updateDate">{{$root.moment(item.updateDate -
+                        0).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+                    <td ng-if="!item.updateDate"></td>
+                    <td>{{item.profileValue.replace('$','管理:')}}</td>
+                    <td ng-class="{
+                        graytradedetail:(item.status=='INITING'),
+                        greentradedetail:(item.status=='VALID'),
+                        redtradedetail:(item.status=='INVALID')
+                        }">
+                        {{item.status == 'INITING' ? '申请中' : item.status == 'VALID' ? '申请成功' : '申请失败'}}
+                    </td>
+                    <td ng-if="item.status == 'INITING'">
+                        <a href="javascript:;" ng-click="vm.updata(item,'VALID')">通过</a>&emsp;&emsp;
+                        <a href="javascript:;" ng-click="vm.updata(item,'INVALID')">拒绝</a>
+                    </td>
+                    <td ng-if="item.status == 'VALID'">
+                        <a href="javascript:;" ng-click="vm.updata(item,'EVER')">取消会员身份</a>
+                    </td>
+                    <td ng-if="item.status == 'INVALID'"></td>
+                </tr>
+                <tr class="ui-no-data" ng-if="vm.isLoading === false && (vm.list.length === 0||vm.list===null)">
+                    <td colspan="14">暂无数据</td>
+                </tr>
+                <tr class="ui-loading" ng-if="vm.isLoading === true">
+                    <td colspan="14">正在加载，请稍候...</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="ui-pager-box">
+            <ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" total-items="vm.totalNum"
+                ng-model="vm.condition.pageNo" max-size="5" items-per-page="vm.pageSize || 10" align="right" class="pagination"
+                boundary-links="true" ng-change="vm.pageChanged()" rotate="false"></ul>
+        </div>
+    </div>
+</div>

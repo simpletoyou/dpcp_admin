@@ -1,0 +1,65 @@
+{
+	"title": "果仁出入管理",
+	"path": "/users/company/nutentry",
+	"query": {
+		"url": "/gop/transferList",
+		"method": "post",
+		"params": []
+	},
+	"tableParams": {
+		"count": 30
+	},
+	"list": [{
+		"name": "单号id",
+		"key": "internalOrderId"
+	}, {
+		"name": "类型",
+		"key": "type"
+	}, {
+		"name": "目标地址",
+		"key": "goallocatiaon"
+	},{
+		"name": "地址分析",
+		"key": "locationanalyse"
+	},{
+		"name": "创建于",
+		"key": "constructtime"
+	},{
+		"name": "审批",
+		"content": [{
+			"type": "click",
+			"name": "通过",
+			"key": "confirm",
+			"url": "/gop/confirmGop",
+			"method": "post",
+			"params": [{
+				"key": "id"
+			},{
+				"key": "confirm",
+				"value": "ADOPT"
+			}]
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "confirm",
+			"url": "/gop/confirmGop",
+			"method": "post",
+			"params": [{
+				"key": "id"
+			},{
+				"key": "confirm",
+				"value": "REFUSE"
+		}]
+	}
+	]},{
+		"name": "数量",
+		"key": "amount"
+	},{
+		"name": "状态",
+		"key": "status"
+	},{
+		"name": "更新于",
+		"key": "updateDate"
+	}]
+
+}

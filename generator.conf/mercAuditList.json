@@ -1,0 +1,98 @@
+{
+	"title": "商户审核",
+	"path": "/mercaudit/list",
+	"query": {
+		"url": "/merManager/verifyList",
+		"method": "get",
+		"params": [{
+			"key": "startDateStr",
+			"type": "calendar",
+      "templateOptions": {
+        "type": "text",
+        "label": "创建时间",
+        "placeholder": ""
+      }
+		}, {
+			"key": "endDateStr",
+			"type": "calendar",
+      "templateOptions": {
+        "type": "text",
+        "label": "至",
+        "placeholder": ""
+      }
+		},{
+			"key": " merchantId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商务人员",
+        "placeholder": ""
+      }
+		}, {
+			"key": "merchantId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商户编号",
+        "placeholder": ""
+      }
+		}, {
+			"key": "contractor",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "公司名称",
+        "placeholder": ""
+      }
+		}]
+	},
+	"tableParams": {
+		"count": 5,
+		"sorting": { 
+			"refundId": "asc" 
+		},
+		"filter": { 
+			"refundId": 1 
+		} 
+	},
+	"list": [{
+		"name": "创建时间",
+		"key": "createTime"
+	},{
+		"name": "商户编号",
+		"key": "merchantId"
+	}, {
+		"name": "公司名称",
+		"key": "contractor"
+	}, {
+		"name": "合同生效时间",
+		"key": "startTime"
+	}, {
+		"name": "开户行",
+		"key": "bankName"
+	},{
+		"name": "所属商务人员",
+		"key": "contractor"
+	},{
+		"name": "商务联系方式",
+		"key": "contractorTelNo"
+	},{
+		"name": "操作",
+		"content": [{
+			"type": "link",
+			"name": "详情",
+			"url": "/agree?id={{item.refundId}}"
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "reject",
+			"url": "/reject",
+			"params": [{
+				"key": "refundId"
+			}, {
+				"key": "userId",
+				"value": "as2342138jkjaslkjlk"
+			}]
+		}]
+	}]
+}

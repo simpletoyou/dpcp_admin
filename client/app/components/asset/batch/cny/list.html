@@ -1,0 +1,84 @@
+<div class="batch-list">
+    <div class="m-table-flex">
+        <div class="thead">
+            <div class="tr">
+                <div class="th" style="flex-basis: 20%">对账批次号</div>
+                <div class="th" style="flex-basis: 20%">对账日期</div>
+                <div class="th" style="flex-basis: 20%">差错数</div>
+                <div class="th" style="flex-basis: 20%">总充值金额</div>
+                <div class="th" style="flex-basis: 20%">总转出金额</div>
+            </div>
+        </div>
+        <div class="tbody">
+                <div class="item"  ng-repeat="item in vm.list" >
+                    <div class="tr">
+                        <div class="td" style="flex-basis: 20%">
+                            <a class="do" href="javascript:;" ng-click="vm.toggleDetail(item)">
+                                <i class="glyphicon"
+                                   ng-class="{'glyphicon-plus':(item.showDetail==false),'glyphicon-minus':(item.showDetail==true)}"></i>
+                            </a>
+                            {{item.batchVersion}}
+                        </div>
+                        <div class="td" style="flex-basis: 20%">{{item.batchVersion.substr(0,10)}}</div>
+                        <div class="td" style="flex-basis: 20%">{{item.depositCountError+item.withdrawCountError}}</div>
+                        <div class="td" style="flex-basis: 20%">{{item.depositAmount|floorFix}}</div>
+                        <div class="td" style="flex-basis: 20%">{{item.withdrawAmount|floorFix}}</div>
+                    </div>
+                    <div class="detail" ng-if="item.showDetail==true">
+                        <div class="detail-box">
+                            <div class="m-table">
+                                <table width="100%">
+                                    <thead>
+                                        <tr>
+                                            <th width="10%"></th>
+                                            <th width="20%">已完成数</th>
+                                            <th width="20%">总金额</th>
+                                            <th width="20%">总收取手续费</th>
+                                            <th width="20%">总支出手续费</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr >
+                                            <td class="gray-bg">充值人民币</td>
+                                            <td >{{item.depositCountOk}}</td>
+                                            <td >￥{{item.depositAmount|floorFix}}</td>
+                                            <td >{{item.depositFeeIn|floorFix}}</td>
+                                            <td >{{item.depositFeeOut|floorFix}}</td>
+                                        </tr>
+                                        <tr >
+                                            <td class="gray-bg">转出人民币</td>
+                                            <td >{{item.withdrawCountOk}}</td>
+                                            <td >￥{{item.withdrawAmount|floorFix}}</td>
+                                            <td >{{item.withdrawFeeIn|floorFix}}</td>
+                                            <td >{{item.withdrawFeeOut|floorFix}}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+        <div class="loading" ng-if="vm.isLoading === false && (!vm.list||vm.list.length === 0)">暂无数据</div>
+        <div class="nodata" ng-if="vm.isLoading === true">正在加载，请稍后……</div>
+    </div>
+
+
+	<div class="ui-pager-box" ng-if="vm.totalNum > 0">
+		<ul uib-pagination
+			previous-text="上一页"
+			next-text="下一页"
+			first-text="首页"
+			last-text="尾页"
+			total-items="vm.totalNum"
+			ng-model="vm.condition.pageNo"
+			max-size="5"
+			items-per-page="vm.condition.pageSize || 10"
+			align="right"
+			class="pagination"
+			boundary-links="true"
+			ng-change="vm.pageChanged()"
+			rotate="false"></ul>
+	</div>
+</div>

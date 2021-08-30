@@ -1,0 +1,37 @@
+{
+	"title": "账目流水",
+	"path": "/users/company/account",
+	"query": {
+		"url": "/fund/businessFinance",
+		"method": "get",
+		"params": [{
+			"key": "Date",
+			"type": "calendar",
+      "templateOptions": {
+        "type": "text",
+        "label": "时间",
+        "placeholder": ""
+      }
+	}]
+	},
+	"tableParams": {
+		"count": 30
+	},
+	"list": [{
+		"name": "时间",
+		"key": "createDate"
+	}, {
+		"name": "行为",
+		"key": "businessType"
+	}, {
+		"name": "人民币变化",
+		"key": "gopPrice"
+	},{
+		"name": "果仁变化",
+		"key": "gopNum"
+	},{
+		"name": "单号id",
+		"key": "orderNo"
+	}]
+
+}

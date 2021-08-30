@@ -1,0 +1,122 @@
+{
+	"title": "订单管理 > 果仁支付订单",
+	"path": "/order/trade",
+	"query": {
+		"url": "/order/trade",
+		"method": "post",
+		"params": [{
+			"key": "merchantId",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "input",
+		       "label": "商户编号",
+		       "required": true
+		    }
+		}, 
+		{
+			"key": "startDate",
+			"type": "calendar",
+		    "templateOptions": {
+		       "label": "订单时间"
+		    }
+		},
+		{
+			"key": "endDate",
+			"type": "calendar",
+		    "templateOptions": {
+		       "label": "至"
+		    }
+		},
+		{
+			"key": "consNo",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "商户订单号",
+		       "required": false
+		    }
+		},
+		{
+			"key": "appName",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "应用名称",
+		       "required": false
+		    }
+		},
+		{
+			"type": "select",
+			"key": "status",
+			"templateOptions": {
+				"label": "支付状态",
+				"options": [{
+					"value": 0,
+					"name": "全部"
+				}, {
+					"value": 1,
+					"name": "成功"
+				}, {
+					"value": 2,
+					"name": "失败"
+				}, {
+					"value": 3,
+					"name": "支付中"
+				}, {
+					"value": 4,
+					"name": "未支付"
+				}]
+			}
+		},
+		{
+			"type": "select",
+			"key": "payMethod",
+			"templateOptions": {
+				"label": "支付方式",
+				"options": [{
+					"value": 0,
+					"name": "全部"
+				}, {
+					"value": 1,
+					"name": "移动支付"
+				}, {
+					"value": 2,
+					"name": "pc扫码"
+				}, {
+					"value": 3,
+					"name": "H5收银台"
+				}]
+			}
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    },
+	"list": [{
+			 "name":"序号",
+			 "key":""},{
+			 "name":"商户编号",
+			 "key":"merchantId"},{
+			 "name":"订单时间",
+			 "key":"tradeTime"},{
+			 "name":"应用名称",
+			 "key":"appId"},{
+			 "name":"商户订单号",
+			 "key":"consNo"},{
+			 "name":"支付订单号",
+			 "key":"payNo"},{
+			 "name":"订单金额(￥)",
+			 "key":"tradeAmount"},{
+			 "name":"果仁数",
+			 "key":""},{
+			 "name":"成交价",
+			 "key":""},{
+			 "name":"用户ID",
+			 "key":"userId"},{
+			 "name":"支付方式",
+			 "key":"payStl"},{
+			 "name":"支付状态",
+			 "key":"status"},{
+			 "name":"失败原因",
+			 "key":""}]
+}

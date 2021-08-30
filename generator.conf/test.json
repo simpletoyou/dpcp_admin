@@ -1,0 +1,37 @@
+{
+	"title": "退款列表",
+	"path": "/test/list",
+	"query": {
+		"url": "/refund/list",
+		"method": "get",
+		"params": [{
+			"key": "refundId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "退款单号",
+        "placeholder": "输入退款单号"
+      }
+		}, {
+			"type": "select",
+			"key": "refundType",
+			"templateOptions": {
+				"label": "交易类型",
+				"options": [{
+					"value": 0,
+					"name": "全部"
+				}, {
+					"value": 1,
+					"name": "主动退款"
+				}]
+			}
+		}]
+	},
+	"list": [{
+		"name": "退款单号",
+		"key": "refundId"
+	}, {
+		"name": "退款时间",
+		"key": "refundTime"
+	}]
+}

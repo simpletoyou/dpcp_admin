@@ -1,0 +1,70 @@
+<div class="module-setting">
+    <div class="ui-box">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="assetCode" class="control-label">忠诚计划配置</label>
+            </div>
+            <div class="form-group">
+                <label for="webUrl" class="col-sm-2 control-label">配置币种</label>
+                <div class="col-sm-13" style="width: 40%; float: left;position: relative;min-height: 1px;padding-right: 15px;padding-left: 15px;">
+                    <select class="form-control" ng-model="vm.form.ASSETCODESD" id="assetCode2">
+                        <option value="">请选择</option>
+                        <option value="{{item.value}}"
+                                ng-repeat="item in $root.$coinList" ng-selected="$$assetCode==item.value">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="webUrl" class="col-sm-2 control-label">计划类型</label>
+                <div class="col-sm-13" style="width: 40%; float: left;position: relative;min-height: 1px;padding-right: 15px;padding-left: 15px;">
+                    <select class="form-control" ng-model="vm.form.TRANSACTIONDAYS">
+                        <!--<option value="">请选择</option>-->
+                        <option value="30" ng-selected="$$TransactionDay==30">30天定期</option>
+                        <option value="60" ng-selected="$$TransactionDay==60">60天定期</option>
+                        <option value="90" ng-selected="$$TransactionDay==90">90天定期</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="webUrl" class="col-sm-2 control-label">年化收益率</label>
+                <div class="col-sm-13" style="width: 40%; float: left;position: relative;min-height: 1px;padding-right: 15px;padding-left: 15px;">
+                    <input type="text" class="form-control" ng-model="$$annualizedYield" maxlength="20" placeholder="请输入年化收益率" />
+                </div>
+                <span style="position: absolute;left: 305px;top: 168px;">%</span>
+            </div>
+            <div class="form-group">
+                <label for="webUrl" class="col-sm-2 control-label">最低起投</label>
+                <div class="col-sm-13" style="width: 40%; float: left;position: relative;min-height: 1px;padding-right: 15px;padding-left: 15px;">
+                    <input type="text" class="form-control" ng-model="$$minimumLifting" maxlength="20" placeholder="请输入最低起投" />
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="webUrl" class="col-sm-2 control-label">限购数量</label>
+                <div class="col-sm-1" style="width:18.333333%;">
+                    <input type="text" class="form-control" ng-model="$$UNLOCK_NUM_PERCENTS[0]" maxlength="20" placeholder="请输入最低限购数量" />
+                </div>
+                <div class="col-sm-1" style="width:18.333333%;">
+                    <input type="text" style="text-align: center;" class="form-control" value="/" disabled />
+                </div>
+                <div class="col-sm-1" style="width:18.333333%;">
+                    <input type="text" class="form-control" ng-model="$$UNLOCK_NUM_PERCENTS[1]" maxlength="20" placeholder="请输入最高限购数量" />
+                </div>
+
+            </div>
+            <div class="form-group">
+                <label for="webUrl" class="col-sm-2 control-label">项目方账户</label>
+                <div class="col-sm-3">
+                    <input type="text" class="form-control" ng-model="$$userid" maxlength="10" placeholder="请输入账户" />
+                </div>
+            </div>
+            <div class="form-group ui-input-select" style="margin-left:96px;">
+                <button type="button" class="btn btn-default" ng-click="$$cancel()">取消</button>
+                <button type="submit"
+                        class="btn btn-primary form-btn"
+                        ng-click="$$ok(vm.form.ASSETCODESD,vm.form.TRANSACTIONDAYS,$$annualizedYield,$$minimumLifting,$$UNLOCK_NUM_PERCENTS[0],$$UNLOCK_NUM_PERCENTS[1],$$userid)">修改</button>
+            </div>
+        </form>
+    </div>
+</div>

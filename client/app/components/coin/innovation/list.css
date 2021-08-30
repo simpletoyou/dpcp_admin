@@ -1,0 +1,80 @@
+/**
+ * @file
+ * @auth liyangyang
+ * @date 2018/04/09
+ */
+.module-trade {
+  font-size: 12px;
+}
+.module-trade .body-title .sm_title {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+.module-trade .body-title .b_list {
+  display: flex;
+}
+.module-trade .body-title .b_list .i_block {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100px;
+  width: 150px;
+  border: 1px solid #000;
+  margin-right: 15px;
+}
+.module-trade .body-title .b_list .i_block p {
+  font-size: 14px;
+}
+.module-trade .body-title .b_list .i_block .tips {
+  margin-top: 10px;
+}
+.module-trade .link {
+  margin-right: 5px;
+}
+.module-trade .link:last-child {
+  margin-right: 0;
+}
+.module-trade .screen {
+  display: inline-block;
+  float: right;
+}
+.module-trade .form-control {
+  width: 150px;
+  display: inline-block;
+}
+.module-trade .form-control.w180 {
+  width: 180px;
+}
+.module-trade .pointer {
+  cursor: pointer;
+}
+.module-trade .redtradedetail {
+  color: red;
+}
+.module-trade .greentradedetail {
+  color: green;
+}
+.module-trade .orangetradedetail {
+  color: orange;
+}
+.module-trade .graytradedetail {
+  color: gray;
+}
+.module-trade .f-12 {
+  font-size: 12px;
+}
+.module-trade .form-group {
+  margin: 5px;
+}
+.module-trade .info-box {
+  margin-bottom: 8px;
+}
+.module-trade .info-label {
+  font-weight: bold;
+}
+.module-trade .info-text {
+  display: inline-block;
+  margin-right: 24px;
+}

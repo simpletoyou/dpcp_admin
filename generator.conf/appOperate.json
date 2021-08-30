@@ -1,0 +1,36 @@
+{
+	"title":"机构及费率管理 > 应用类型 > 添加／修改／审核",
+	"path":"/organ/add",
+	"query":{
+		"url":"/organ/add",
+		"method":"post",
+		"params":[{
+			"key": "typeName",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "类型名称",
+		       "required": true
+		    }
+		},{
+			"key": "rate",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "规定费率",
+		       "required": true
+		    }
+		},{
+			"key": "minCharge",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "最低收取金额",
+		       "required": true
+		    }
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    }
+}

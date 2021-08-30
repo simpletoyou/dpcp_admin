@@ -1,0 +1,43 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/18
+ */
+
+.ui-box {
+    padding: 20px;
+    border: 1px @color-border solid;
+}
+
+.ui-loading, .ui-no-data {
+    color: #999;
+    text-align: center;
+    td {
+        padding: 20px;
+    }
+}
+
+.ui-pager-box {
+    text-align: right;
+}
+
+.ui-form {
+    .btn {
+        margin-left: 10px;
+    }
+}
+
+.ui-input-select {
+    font-size: 0;
+    >input.form-control {
+        position: relative;
+        z-index: 1;
+        margin-right: -2px;
+        border-top-right-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+    >select.form-control {
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+    }
+}

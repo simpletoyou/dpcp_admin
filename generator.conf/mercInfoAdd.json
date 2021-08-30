@@ -1,0 +1,79 @@
+{
+	"title": "资料录入",
+	"path": "/order/add",
+	"query": {
+		"url": "/mercinfo/add",
+		"method": "post",
+		"params": [{
+			"key": "orderId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "公司名称",
+        "placeholder": "",
+        "required": true
+      }
+		}, {
+			"key": "orderId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "注册地址",
+        "placeholder": "",
+        "required": true
+      }
+		},{
+			"key": "orderId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "联系地址",
+        "placeholder": "",
+        "required": true
+      }
+		}, {
+			"key": "orderId",
+			"type": "calendar",
+      "templateOptions": {
+        "type": "text",
+        "label": "合同生效日期",
+        "placeholder": "",
+        "required": true
+      }
+		}, {
+			"key": "orderId",
+			"type": "calendar",
+      "templateOptions": {
+        "type": "text",
+        "label": "合同失效日期",
+        "placeholder": "",
+        "required": true
+      }
+		}, {
+			"key": "orderId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "开户名",
+        "placeholder": "",
+        "required": true
+      }
+		}, {
+			"type": "select",
+			"key": "orderType",
+			"templateOptions": {
+				"label": "账户类型",
+				"options": [{
+					"value": 0,
+					"name": "企业账户"
+				}, {
+					"value": 1,
+					"name": "借记卡"
+				},{
+					"value": 1,
+					"name": "结算卡"
+				}]
+			}
+		}]
+	}
+}

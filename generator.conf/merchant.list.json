@@ -1,0 +1,72 @@
+{
+    "title": "商户列表",
+    "path": "/merManager/merList",
+    "query": {
+        "url": "/merManager/merList",
+        "method": "get",
+        "params": [
+            {
+            	"key": "email",
+                "type": "input",
+                "templateOptions": {
+                    "type": "text",
+                    "label": "注册账号",
+                    "placeholder": "输入注册账号"
+                }
+         
+            },
+            {
+            	"key":"merchantId",
+                "type": "input",
+                "templateOptions":{
+                	"type":"text",
+                	"label":"商户编号",
+                	"placeholder": "输入商户编号"
+                }
+            },
+            {
+            	"key":"contractor",
+                "type": "input",
+                "templateOptions":{
+                	"type":"text",
+                	"label":"商务人员",
+                	"placeholder": "输入商户人员"
+                }
+            }
+        ]
+    },
+    "list": [
+        {
+            "name": "商户编号",
+            "key": "merchantId"
+        },
+        {
+            "name": "公司名称",
+            "key": "merName"
+        },
+        {
+            "name": "应用个数",
+            "key": "appNums"
+        },
+        {
+            "name": "合同生效时间",
+            "key": "startTime"
+        },
+        {
+            "name": "所属商务人员",
+            "key": "contractor"
+        },
+        {
+            "name": "商务联系方式",
+            "key": "contractorTelNo"
+        },
+        {
+            "name": "审核状态",
+            "key": "statusName"
+        },
+        {
+            "name": "拒绝理由",
+            "key": "checkInfo"
+        }
+    ]
+}

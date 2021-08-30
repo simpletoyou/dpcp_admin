@@ -1,0 +1,46 @@
+{
+	"title":"渠道及费率管理 > 应用类型",
+	"path":"/organ/list",
+	"query":{
+		"url":"/organ/list",
+		"method":"post",
+		"params":[{
+			"key": "addApp",
+			"type": "click",
+		    "templateOptions": {
+		       "type": "button",
+		       "label": "增加类型",
+		       "required": true
+		    }
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    },
+	"list":[{"name":"序号",
+			 "key":""},
+			{"name":"应用代码",
+			 "key":"type"},
+			{"name":"应用类型",
+			 "key":"typeName"},
+			{"name":"规定费率",
+			 "key":"rate"},
+			{"name":"最低收取金额/元笔",
+			 "key":"minCharge"},
+			{"name":"状态",
+			 "key":"status"},
+			{"name":"备注",
+			 "key":"checkInfo"},
+			{"name":"操作",
+			 "content": [{
+				"type": "link",
+				"name": "修改",
+				"url": "/organ/add?id={{item.id}}"
+			 },{
+				"type": "link",
+				"name": "审核",
+				"url": "/organ/add?id={{item.id}}"
+			 }]
+			}
+	]
+}

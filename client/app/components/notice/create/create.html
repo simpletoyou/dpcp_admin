@@ -1,0 +1,61 @@
+<div class="module-notice module-notice-list1">
+    <ol class="breadcrumb">
+        <li><a href="#/notice/list">公告</a></li>
+        <li class="active">发布币种资讯</li>
+    </ol>
+    <div class="ui-box">
+        <form role="form">
+            <div class="form-group">
+                <label for="exampleInputEmail1">标题</label>
+                <input type="text" class="form-control" id="exampleInputEmail1" maxlength="50" ng-model="vm.form.title"
+                    placeholder="请输入币种资讯标题">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail2">资产代码</label>
+                <input type="text" class="form-control" id="exampleInputEmail2" maxlength="100" ng-model="vm.form.assetCode"
+                    placeholder="请输入资产代码">
+            </div>
+            <div class="form-group">
+                <label for="exampleInputEmail3">资产类型</label>
+                <select class="form-control"  ng-model="vm.form.infoType">
+                    <option value="PUBLISH">披露</option>
+                    <option value="FUND">基金</option>
+                    <option value="REPORT">报告</option>
+                </select>
+            </div>
+            <div class="form-group" ng-show="vm.form.infoType=='REPORT'||vm.form.infoType=='PUBLISH'">
+                <label for="exampleInputEmail4">编号</label>
+                <input type="number" class="form-control" id="exampleInputEmail4" maxlength="100" ng-model="vm.form.num"
+                    placeholder="如01、02、03">
+            </div>
+
+            <div class="form-group" ng-show="vm.form.infoType=='REPORT'">
+                <label for="time">上传PDF文件</label>
+                <div class="out-border">
+                    <input type="file" class="fileLabel file-img" ngf-select="vm.uploadFile($file, $invalidFiles)" ng-model="vm.form.name"
+           name="{{vm.form.name}}" ngf-max-size="1024MB" accept=".pdf"/>
+                </div>
+            </div>
+            <div class="form-group" ng-show="vm.form.infoType=='PUBLISH'">
+                <label for="exampleInputEmail5">基金份额资产净值</label>
+                <input type="text" class="form-control" id="exampleInputEmail5" maxlength="100" ng-model="vm.form.fundNum"
+                    placeholder="请输入基金份额资产净值">
+            </div>
+            <div class="form-group">
+                <label for="time">时间</label>
+                <input type="text" id="time" maxlength="100" class="form-control" ng-model="vm.form.createTime "
+                    placeholder="请输入币种资讯发布时间">
+            </div>
+            <div class="form-group">
+                <label>内容</label>
+                <!-- <textarea class="form-control"
+                          rows="20"
+                          ng-model="vm.form.content"
+                          placeholder="请输入公告内容"></textarea> -->
+                <!--style给定宽度可以影响编辑器的最终宽度-->
+                <script type="text/plain" id="myEditor" style="width: 100%; height: 340px"></script>
+            </div>
+            <button type="submit" class="btn btn-primary" ng-click="vm.submit()">添加</button>
+        </form>
+    </div>
+</div>

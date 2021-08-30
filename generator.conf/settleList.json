@@ -1,0 +1,123 @@
+{
+	"title": "结算信息维护",
+	"path": "/settleinfo/list",
+	"query": {
+		"url": "/settleManagerr/settleList",
+		"method": "get",
+		"params": [{
+			"key": "startDateStr",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "创建时间",
+        "placeholder": ""
+      }
+		}, {
+			"key": "endDateStr",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "至",
+        "placeholder": ""
+      }
+		}, {
+			"key": "merchantId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商户编号",
+        "placeholder": ""
+      }
+		}, {
+			"key": "settlePeriod",
+			"type": "select",
+      "templateOptions": {
+        "label": "结算周期",
+       "options": [{
+					"value": 0,
+					"name": "T+1"
+				}, {
+					"value": 1,
+					"name": "T+2"
+				},{
+					"value":2,
+					"name":"T+n"
+				}]
+      }
+		},{
+			"key": "settleType",
+			"type": "select",
+      "templateOptions": {
+        "label": "结算方式",
+       "options": [{
+					"value": 0,
+					"name": "定期结算"
+				}, {
+					"value": 1,
+					"name": "自主结算"
+				}]
+      }
+		}]
+	},
+	"tableParams":{
+		"count": 5,
+		"sorting": { 
+			"refundId": "asc" 
+		},
+		"filter": { 
+			"refundId": 1 
+		} 
+	},
+	"list":[{
+		"name": "商户编号",
+		"key": "merchantId"
+	}, {
+		"name": "开户名",
+		"key": "accountName"
+	}, {
+		"name": "结算账户",
+		"key": "appNums"
+	},{
+		"name": "银行卡号",
+		"key": "stlBankCardNo"
+	}, {
+		"name": "开户地区",
+		"key": "contractor"
+	},{
+		"name": "结算方式",
+		"key": "contractorTelNo"
+	},{
+		"name": "结算周期",
+		"key": "status"
+	},{
+		"name": "创建时间",
+		"key": "checkInfo"
+	},{
+		"name": "修改时间",
+		"key": "checkInfo"
+	},{
+		"name": "状态",
+		"key": "checkInfo"
+	},{
+		"name": "拒绝理由",
+		"key": "checkInfo"
+	},{
+		"name": "操作",
+		"content": [{
+			"type": "link",
+			"name": "详情",
+			"url": "/agree?id={{item.refundId}}"
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "reject",
+			"url": "/reject",
+			"params": [{
+				"key": "refundId"
+			}, {
+				"key": "userId",
+				"value": "as2342138jkjaslkjlk"
+			}]
+		}]
+	}]
+}

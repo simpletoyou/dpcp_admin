@@ -1,0 +1,102 @@
+{
+	"title":"渠道及费率管理 >  机构费率 > 审核",
+	"path":"/organ/organFeeAdd44",
+	"query":{
+		"url":"/organ/organFeeAdd44",
+		"method":"post",
+		"params":[{
+			"key": "orgName",
+			"type": "select",
+		    "templateOptions": {
+				"label": "机构名称",
+				"options": [{
+					"value": 0,
+					"name": "块钱"
+				}]
+			}
+		},{
+			"key": "chlMerNo",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "商户号",
+		       "required": true
+		    }
+		},{
+			"key": "",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "接口名称",
+		       "required": true
+		    }
+		},{
+			"key": "",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "接口类型",
+		       "required": true
+		    }
+		},{
+			"key": "",
+			"type": "input",
+		     "templateOptions": {
+		       "type": "text",
+		       "label": "账户类型",
+		       "required": true
+		    }
+		},{
+			"key": "cardName",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "支持卡名称",
+		       "required": true
+		    }
+		},{
+			"key": "feeType",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "费率类型",
+		       "required": true
+		    }
+		},{
+			"key": "min",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "最小金额",
+		       "required": true
+		    }
+		},{
+			"key": "max",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "最大金额",
+		       "required": true
+		    }
+		},{
+			"key": "fee",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "费率",
+		       "required": true
+		    }
+		},{
+			"key": "resv",
+			"type": "text",
+		    "templateOptions": {
+		       "type": "text",
+		       "label": "拒绝原因",
+		       "required": true
+		    }
+		}]
+	},
+	"tableParams": {
+        "count": 10
+    }
+}

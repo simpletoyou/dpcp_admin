@@ -1,0 +1,124 @@
+{
+    "title": "待审批",
+    "path": "/settleManager/reExamine",
+    "query": {
+        "url": "/settleManager/reExamine",
+        "method": "get",
+        "params": [
+            {
+            	"key": "dispensingOrderNo",
+                "type": "input",
+                "templateOptions": {
+                    "type": "text",
+                    "label": "付款订单号"
+                }
+         
+            },
+            {
+            	"key":"merchantId",
+                "type": "input",
+                "templateOptions":{
+                	"type":"text",
+                	"label":"商户编号"
+                }
+            },
+            {
+            	"key":"settleType",
+                "type": "select",
+                "templateOptions":{
+                	"label":"结算类型",
+                    "options":[
+                        {"name":"","value":"2"},
+                        {"name":"","value":"2"},
+                        {"name":"","value":"2"},
+                        {"name":"","value":"2"}
+                    ]
+                }
+            },
+            {
+                "key":"cardType",
+                "type": "select",
+                "templateOptions":{
+                    "label":"卡类型",
+                    "options":[
+                        {"name":"1","value":"对公账户"},
+                        {"name":"2","value":"借记卡"},
+                        {"name":"3","value":"贷记卡"}
+                    ]
+                }
+            },
+            {
+                "key":"currency",
+                "type": "select",
+                "templateOptions":{
+                    "label":"币种",
+                    "options":[
+                        {"name":"CNY","value":"人民币"},
+                        {"name":"GOP","value":"果仁币"}
+                    ]
+                }
+            }
+        ]
+    },
+    "tableParams": {
+       "count":10
+    },
+    "list": [
+        {
+            "name": "创建时间",
+            "key": "merchantId"
+        },
+        {
+            "name": "付款订单号",
+            "key": "merName"
+        },
+        {
+            "name": "商户编号",
+            "key": "appNums"
+        },
+        {
+            "name": "业务类型",
+            "key": "startTime"
+        },
+        {
+            "name": "收款姓名",
+            "key": "contractor"
+        },
+        {
+            "name": "收款银行",
+            "key": "contractorTelNo"
+        },
+        {
+            "name": "收款卡类型",
+            "key": "statusName"
+        },
+        {
+            "name": "币种",
+            "key": "checkInfo"
+        },
+        {
+            "name": "待结算金额",
+            "key": "contractor"
+        },
+        {
+            "name": "应结算金额",
+            "key": "contractorTelNo"
+        },
+        {
+            "name": "手续费",
+            "key": "statusName"
+        },
+        {
+            "name": "原付款方式",
+            "key": "checkInfo"
+        },
+        {
+            "name": "撤销原因",
+            "key": "checkInfo"
+        },
+        {
+            "name": "操作",
+            "key": "checkInfo"
+        }
+    ]
+}

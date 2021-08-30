@@ -1,0 +1,94 @@
+<div class="module-trade">
+	<ol class="breadcrumb fn-clearfix">
+		<li>用户管理</li>
+		<li>团队绩效管理</li>
+	</ol>
+	<div class="panel panel-warning">
+		<div class="panel-body">
+			<form class="form-inline ui-form" role="form">
+				<div class="form-group ui-input-select">
+					<label for="record-uid" class="control-label f-12">uid：</label>
+					<input type="text" class="form-control " placeholder="UID" ng-model="uid" id="record-uid">
+				</div>
+				<!--<div class="form-group ui-input-select">-->
+					<!--<label for="record-uid" class="control-label f-12">等级搜索：</label>-->
+					<!--<input type="text" class="form-control " placeholder="vip" ng-model="vip" id="record-uid">-->
+				<!--</div>-->
+				<div class="form-group ui-input-select">
+						<label for="coinin-type" class="control-label f-12">等级搜索：</label>
+						<select class="form-control" ng-model="vm.status" placeholder="请选择状态">
+								<option value="{{coin.value}}" ng-repeat="coin in status">{{coin.label}}</option>
+						</select>
+				</div>
+				<div class="form-group">
+					<label class="control-label f-12">日期选择：</label>
+					<input type="date" ng-model="startTime" class="form-control w180" ng-change="vm.changeStartDate(startTime)">
+					-
+					<input type="date" ng-model="endTime" class="form-control w180" ng-change="vm.changeEndDate(endTime)"
+						   ng-disabled="disabledEndDate"
+						   min="{{min}}">
+					<!-- <div uib-datepicker ng-model="dt" class="well well-sm" datepicker-options="options"></div> -->
+				</div>
+				<div class="form-group ui-input-select">
+					<button type="submit" class="btn btn-primary" ng-click="vm.fetchList()">搜索</button>
+				</div>
+
+			</form>
+		</div>
+	</div>
+
+	<div class="ui-box">
+		<table class="table table-striped table-hover table-bordered">
+			<thead>
+				<tr>
+					<th>UID</th>
+					<th>邮箱</th>
+					<th>等级</th>
+					<th>直接下级人数</th>
+					<th>交易挖矿IEP</th>
+					<th>贡献时间</th>
+					<th>操作</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+					<td>{{item.uid}}</td>
+					<td>{{item.email}}</td>
+					<td>{{item.memberType == 'VIP1' ? '一级代理' : item.memberType == 'VIP2' ? '二级代理' : '三级代理'}}</td>
+					<td>{{item.lowerMemberPerson}}</td>
+					<td>{{item.teamAllTradeProfit }}</td>
+					<td ng-if="item.startTime==null"> </td>
+					<td ng-if="item.startTime!=null && item.endTime==null">开始时间：{{$root.moment(item.startTime - 0).utc().utcOffset($root.ZONE).format('YYYY/MM/DD')}} - 截止时间：∞</td>
+					<td ng-if="item.startTime!=null && item.endTime!=null">开始时间：{{$root.moment(item.startTime - 0).utc().utcOffset($root.ZONE).format('YYYY/MM/DD')}} - 截止时间：{{$root.moment(item.endTime - 0).utc().utcOffset($root.ZONE).format('YYYY/MM/DD')}}</td>
+					<!--<td></td>-->
+					<!--<td>{{$root.moment(item.updateTime - 0).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>-->
+					<!--<td ng-class="{-->
+						<!--greentradedetail:(item.bindStatus=='BIND_SUCCESS'),-->
+						<!--redtradedetail:(item.bindStatus=='APPLY_FOR_BIND')}" >-->
+						<!--{{vm.returnUserState(item.bindStatus)}}-->
+					<!--</td>-->
+					<!--<td></td>-->
+					<td>
+						<div>
+							<!--<a href="javascript:;" ng-click="vm.setStatus(item,'BIND_SUCCESS')">详情</a>-->
+							<a href="{{'#commonusers/team/performance/teamDetails?uid='+item.uid+'&'+'memberType='+item.memberType+'&'+'teamAllPerson='+item.teamAllPerson}}" >详情</a>
+						</div>
+					</td>
+				</tr>
+				<tr class="ui-no-data" ng-if="vm.isLoading === false && (vm.list.length === 0||vm.list===null)">
+					<td colspan="6">暂无数据</td>
+				</tr>
+				<tr class="ui-loading" ng-if="vm.isLoading === true">
+					<td colspan="6">正在加载，请稍候...</td>
+				</tr>
+			</tbody>
+		</table>
+
+		<div class="ui-pager-box" ng-if="vm.totalNum > 0">
+			<ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" total-items="vm.totalNum" ng-model="vm.condition.pageNo"
+			  max-size="5" items-per-page="vm.pageSize || 10" align="right" class="pagination" boundary-links="true" ng-change="vm.pageChanged()"
+			  rotate="false">
+			</ul>
+		</div>
+	</div>
+</div>

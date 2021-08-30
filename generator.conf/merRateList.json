@@ -1,0 +1,95 @@
+{
+	"title": "费率信息维护维护",
+	"path": "/feeinfo/list",
+	"query": {
+		"url": "/merRate/merRateList",
+		"method": "get",
+		"params": [{
+			"key": "startDateStr",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "创建时间",
+        "placeholder": ""
+      }
+		}, {
+			"key": "endDateStr",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "至",
+        "placeholder": ""
+      }
+		}, {
+			"key": "appType",
+			"type": "select",
+      "templateOptions": {
+        "label": "应用类型",
+       "options": [{
+					"value": 0,
+					"name": "电商类"
+				}, {
+					"value": 1,
+					"name": "游戏类"
+				}]
+      }
+		}, {
+			"key": "merchantId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商户编号",
+        "placeholder": ""
+      }
+		}]
+	},
+	"tableParams":{
+		"count": 5,
+		"sorting": { 
+			"refundId": "asc" 
+		},
+		"filter": { 
+			"refundId": 1 
+		} 
+	},
+	"list":[{
+		"name": "商户编号",
+		"key": "merchantId"
+	}, {
+		"name": "应用类型",
+		"key": "appType"
+	}, {
+		"name": "费率",
+		"key": "usingFee"
+	},{
+		"name": "创建时间",
+		"key": "createTime"
+	}, {
+		"name": "修改时间",
+		"key": "updateTime"
+	},{
+		"name": "状态",
+		"key": "status"
+	},{
+		"name": "拒绝理由",
+		"key": "checkInfo"
+	},{
+		"name": "操作",
+		"content": [{
+			"type": "link",
+			"name": "详情",
+			"url": "/agree?id={{item.refundId}}"
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "reject",
+			"url": "/reject",
+			"params": [{
+				"key": "refundId"
+			}, {
+				"key": "userId",
+				"value": "as2342138jkjaslkjlk"
+			}]
+		}]
+	}]
+}

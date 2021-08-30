@@ -1,0 +1,29 @@
+<div class="module-asset all-balance">
+    <ol class="breadcrumb fn-clearfix">
+        <li>对账系统</li>
+        <li>总余额表</li>
+    </ol>
+
+    <!--<form name="outerForm" class="tab-form-demo">-->
+        <uib-tabset active="activeForm">
+            <uib-tab index="0" heading="人民币" ng-click="vm.toggleTab('CNY')">
+                <!--<ng-form name="nestedForm">-->
+                    <!--<div class="form-group">-->
+                        <!--<label>Name</label>-->
+                        <!--<input type="text" class="form-control" required ng-model="model.name"/>-->
+                    <!--</div>-->
+                <!--</ng-form>-->
+                <all-balance-cny ng-if="vm.selectedBtn=='CNY'"></all-balance-cny>
+            </uib-tab>
+
+
+            <uib-tab index="1" heading="GOP" ng-click="vm.toggleTab('GOP')">
+                <all-balance-gop ng-if="vm.selectedBtn=='GOP'"></all-balance-gop>
+            </uib-tab>
+            <!--<uib-tab index="2" heading="Tab Two">-->
+                <!--<bank-order-list ng-show="!vm.selectedBtn"></bank-order-list>-->
+            <!--</uib-tab>-->
+        </uib-tabset>
+    <!--</form>-->
+
+</div>

@@ -1,0 +1,101 @@
+{
+	"title":"订单管理 > 退款管理",
+	"path":"/order/refund",
+	"query":{
+		"url":"/order/refund",
+		"method":"post",
+		"params":[{
+			"key": "payOrderNo",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "input",
+		       "label": "支付订单号",
+		       "required": true
+		    }
+		},
+		{
+			"key": "startDate",
+			"type": "calendar",
+			"templateOptions": {
+			    "label": "订单时间"
+			}
+		},
+		{
+			"key": "endDate",
+			"type": "calendar",
+		    "templateOptions": {
+		       "label": "至"
+		    }
+		},
+		{
+			"key": "refundOrderNo",
+			"type": "input",
+		    "templateOptions": {
+		       "type": "input",
+		       "label": "退款订单号",
+		       "required": false
+		    }
+		},
+		{
+			"key": "refundDate",
+			"type": "calendar",
+		    "templateOptions": {
+		       "label": "退款时间"
+		    }
+		},
+		{
+			"key": "status",
+			"type": "select",
+		    "templateOptions": {
+		       "label": "退款状态",
+				"options": [{
+					"value": 0,
+					"name": "初始化"
+				},{
+					"value": 1,
+					"name": "处理中"
+				},{
+					"value": 2,
+					"name": "成功"
+				},{
+					"value": 3,
+					"name": "失败"
+				},{
+					"value": 4,
+					"name": "过期"
+				}]
+		    }
+		}
+		]
+	},
+	"tableParams": {
+        "count": 10
+    },
+	"list":[{
+		"name":"序号",
+		"key":""},{
+		"name":"商户编号",
+		"key":"mercId"},{
+		"name":"订单时间",
+		"key":""},{
+		"name":"申请退款时间",
+		"key":""},{
+		"name":"商户订单号",
+		"key":"consNo"},{
+		"name":"退款订单号",
+		"key":"refundNo"},{
+		"name":"订单金额(￥)",
+		"key":"feeAmt"},{
+		"name":"退款金额(￥)",
+		"key":"refundAmount"},{
+		"name":"支付方式",
+		"key":""},{
+		"name":"支付机构",
+		"key":""},{
+		"name":"退款状态",
+		"key":"status"},{
+		"name":"失败原因",
+		"key":"remark"},{
+		"name":"操作",
+		"key":""}]
+}

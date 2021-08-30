@@ -1,0 +1,79 @@
+{
+	"title": "交易详情",
+	"path": "/users/company/tradedetail",
+	"query": {
+		"url": "/trade/OrderList",
+		"method": "post",
+		"params": [{
+			"type": "select",
+			"key": "tradeselect",
+			"templateOptions": {
+				"label": "交易类型",
+				"options": [{
+					"value": 0,
+					"name": "全部"
+				}, {
+					"value": 1,
+					"name": "买入"
+				},{
+					"value": 2,
+					"name": "卖出"
+				}]
+			}
+		}, {
+			"type": "select",
+			"key": "tradestatus",
+			"templateOptions": {
+				"label": "交易状态",
+				"options": [{
+					"value": 0,
+					"name": "全部"
+				}, {
+					"value": 1,
+					"name": "进行中"
+				},{
+					"value": 2,
+					"name": "已经完成"
+				}]
+			}
+		}]
+	},
+	"tableParams": {
+		"count": 30
+	},
+	"list": [{
+		"name": "单号/id",
+		"key": "internalOrderNo"
+	}, {
+		"name": "委单类型",
+		"key": "tradeFlag"
+	}, {
+		"name": "委托价格",
+		"key": "gopPrice"
+	},{
+		"name": "果仁数量",
+		"key": "gopNum"
+	},{
+		"name": "下单金额",
+		"key": "money"
+	},{
+		"name": "已撮合果仁",
+		"key": "tradedGop"
+	},{
+		"name": "已撮合金额",
+		"key": "tradedMoney"
+	},{
+		"name": "类型",
+		"key": "orderType"
+	},{
+		"name": "状态",
+		"key": "status"
+	},{
+		"name": "创建于",
+		"key": "createDate"
+	},{
+		"name": "更新于",
+		"key": "updateDate"
+	}]
+
+}

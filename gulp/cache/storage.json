@@ -1,0 +1,26 @@
+[
+  {
+    "appname": "orderAdd",
+    "path": "/order/add/add"
+  },
+  {
+    "appname": "refundList",
+    "path": "/refund/list/list"
+  },
+  {
+    "appname": "usersCompanyTradedetail",
+    "path": "/users/company/tradedetail/tradedetail"
+  },
+  {
+    "appname": "usersCompanyAccount",
+    "path": "/users/company/account/account"
+  },
+  {
+    "appname": "usersCompanyNutentry",
+    "path": "/users/company/nutentry/nutentry"
+  },
+  {
+    "appname": "commonusers",
+    "path": "/commonusers/commonusers"
+  }
+]

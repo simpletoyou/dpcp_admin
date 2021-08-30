@@ -1,0 +1,15 @@
+<div class="module-asset all-balance">
+    <ol class="breadcrumb fn-clearfix">
+        <li>KYC审核</li>
+        <li>身份审核</li>
+    </ol>
+    <ul class="tab-ul">
+        <li class="tab-li" ng-click="vm.toggleTab('current')" ui-sref=".identityCurrent" ng-class="{'tab-li--selected':vm.selectedBtn==='current'}">待审核</li>
+        <li class="tab-li" ng-click="vm.toggleTab('history')" ui-sref=".identityHistory" ng-class="{'tab-li--selected':vm.selectedBtn==='history'}">审核历史</li>
+    </ul>
+    <div data-ui-view="" >
+        <!--<identity-current ng-if="vm.selectedBtn==='current'"></identity-current>-->
+        <!--<identity-current ng-if="vm.selectedBtn==='history'"></identity-current>-->
+    </div>
+
+</div>

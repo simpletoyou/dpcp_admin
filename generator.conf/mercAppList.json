@@ -1,0 +1,103 @@
+{
+	"title": "应用信息管理",
+	"path": "/mercapp/list",
+	"query": {
+		"url": "/merApp/merApp",
+		"method": "get",
+		"params": [{
+			"key": "appId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "应用id",
+        "placeholder": ""
+      }
+		},{
+			"key": "merchantId",
+			"type": "input",
+      "templateOptions": {
+        "type": "text",
+        "label": "商户编号",
+        "placeholder": ""
+      }
+		},{
+			"type": "select",
+			"key": "appType",
+			"templateOptions": {
+				"label": "应用类型",
+				"options": [{
+					"value": 0,
+					"name": "电商类"
+				}, {
+					"value": 1,
+					"name": "游戏类"
+				}]
+			}
+		},{
+			"type": "select",
+			"key": "appType",
+			"templateOptions": {
+				"label": "应用状态",
+				"options": [{
+					"value": 0,
+					"name": "正常"
+				}, {
+					"value": 1,
+					"name": "冻结"
+				}]
+			}
+		}]
+	},
+	"tableParams": {
+		"count": 5,
+		"sorting": { 
+			"refundId": "asc" 
+		},
+		"filter": { 
+			"refundId": 1 
+		} 
+	},
+	"list": [{
+		"name": "应用ID",
+		"key": "appId"
+	},{
+		"name": "应用名称",
+		"key": "cashTotalAmount"
+	}, {
+		"name": "应用类型",
+		"key": "clearTotalAmount"
+	}, {
+		"name": "所属商户编号",
+		"key": "merchantId"
+	}, {
+		"name": "创建时间",
+		"key": "createTime"
+	},{
+		"name": "费率",
+		"key": "securityTotalAmount"
+	},{
+		"name": "应用状态",
+		"key": "status"
+	},{
+		"name": "备注",
+		"key": "checkInfo"
+	},{
+		"name": "操作",
+		"content": [{
+			"type": "link",
+			"name": "详情",
+			"url": "/agree?id={{item.refundId}}"
+		},{
+			"type": "click",
+			"name": "拒绝",
+			"key": "reject",
+			"url": "/reject",
+			"params": [{
+				"key": "refundId"
+			}, {
+				"key": "userId",
+				"value": "as2342138jkjaslkjlk"
+			}]
+		}]
+	}]
+}

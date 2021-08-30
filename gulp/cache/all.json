@@ -1,0 +1,49 @@
+{
+  "list": {
+    "dirname": "list",
+    "parentname": "refund",
+    "type": "list",
+    "appname": "list",
+    "config": "list",
+    "destPath": "/Users/liubingli/Work/guoren/project/business-admin/client/app/components/refund/list"
+  },
+  "tradedetail": {
+    "dirname": "tradedetail",
+    "parentname": "users/company",
+    "type": "list",
+    "appname": "tradedetail",
+    "config": "tradedetail",
+    "destPath": "C:\\Users\\Administrator\\Documents\\GitHub\\business-admin\\client\\app\\components\\users\\company\\tradedetail"
+  },
+  "account": {
+    "dirname": "account",
+    "parentname": "users/company",
+    "type": "list",
+    "appname": "account",
+    "config": "account",
+    "destPath": "C:\\Users\\Administrator\\Documents\\GitHub\\business-admin\\client\\app\\components\\users\\company\\account"
+  },
+  "tradetail": {
+    "dirname": "tradedetail",
+    "parentname": "users/company",
+    "type": "list",
+    "appname": "tradedetail",
+    "config": "tradetail",
+    "destPath": "C:\\Users\\Administrator\\Documents\\GitHub\\business-admin\\client\\app\\components\\users\\company\\tradedetail"
+  },
+  "nutentry": {
+    "dirname": "nutentry",
+    "parentname": "users/company",
+    "type": "list",
+    "appname": "nutentry",
+    "config": "nutentry",
+    "destPath": "C:\\Users\\Administrator\\Documents\\GitHub\\business-admin\\client\\app\\components\\users\\company\\nutentry"
+  },
+  "commonusers": {
+    "dirname": "commonusers",
+    "type": "list",
+    "appname": "commonusers",
+    "config": "commonusers",
+    "destPath": "C:\\Users\\Administrator\\Documents\\GitHub\\business-admin\\client\\app\\components\\commonusers"
+  }
+}

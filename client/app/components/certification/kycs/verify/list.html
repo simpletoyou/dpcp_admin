@@ -1,0 +1,95 @@
+<div class="all-balance-list">
+    <div class="panel panel-warning">
+        <div class="panel-body">
+            <form class="form-inline ui-form" role="form">
+                <div class="form-group ui-input-select">
+                    <input type="text" class="form-control" ng-model="vm.keyWordVal" placeholder="按类别搜索信息">
+                    <select class="form-control" ng-model="vm.keyWord">
+                        <option value="uid">UID</option>
+                        <option value="email">邮箱</option>
+                        <!-- <option value="uid">证件号</option> -->
+                    </select>
+                    <button type="submit" class="btn btn-primary" ng-click="vm.fetchList()">查询</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    <table class="table table-striped table-hover table-bordered">
+        <thead>
+            <tr>
+                <th width="5.5%">提交时间</th>
+                <th width="7%" class="border-right" ng-click="vm.passDialog()">账户名</th>
+                <th width="2%">UID</th>
+                <th width="5%">邀请人</th>
+                <th width="3%">类型</th>
+                <th width="5%">姓名</th>
+                <th width="3%">证件类型</th>
+                <th width="7%">证件号</th>
+                <th width="5%">有效期</th>
+                <th width="8%">证件图片</th>
+                <th width="5%">操作</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr ng-repeat="item in vm.list" ng-if="vm.isLoading === false && vm.list.length > 0">
+                <td>{{$root.moment(item.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+                <td>{{ item.email || '暂无数据'}}</td>
+                <td>{{item.uid}}</td>
+                <td>{{item.inviteName}}</td>
+                <td>初级实名</td>
+                <td>{{item.fullName}}</td>
+                <!-- <td ng-class="{'font-red':(item.auditStatus=='FAIL')}">{{item.auditStatus |auditStatus}}</td> -->
+                <td>
+                    <span class="text" ng-if="item.cardType==='PASSPORT'">护照</span>
+                    <span class="text" ng-if="item.cardType==='ID_CARD'">身份证</span>
+                </td>
+                <td>{{item.cardNo}}</td>
+                <td>{{$root.moment(item.expiredDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD') }}</td>
+                <td>
+                    <div class="col-md-3" style="display: inline-block;" ng-if="item.cardPhoto[0]">
+                        <img class="zhengjian-bg" ng-src={{vm.zhengjianBG}} ng-click="vm.showImg(item.cardPhoto[0])"><br />
+                        <span class="text">正面</span>
+                    </div>
+                    <div class="col-md-3" style="display: inline-block;" ng-if="!item.cardPhoto[0]">
+                        <span class="text">无正<br />面照</span>
+                    </div>
+                    <div class="col-md-3" style="display: inline-block;" ng-if="item.cardPhoto[1]">
+                        <img class="zhengjian-bg" ng-src={{vm.zhengjianBG}} ng-click="vm.showImg(item.cardPhoto[1])"><br />
+                        <span class="text">反面</span>
+                    </div>
+                    <div class="col-md-3" style="display: inline-block;" ng-if="!item.cardPhoto[1]">
+                        <span class="text">无反<br />面照</span>
+                    </div>
+                    <div class="col-md-3" style="display: inline-block;" ng-if="item.cardHandhold">
+                        <img class="zhengjian-bg" ng-src={{vm.zhengjianBG}} ng-click="vm.showImg(item.cardHandhold)"><br />
+                        <span class="text">手持</span>
+                    </div>
+                    <div class="col-md-3" style="display: inline-block;" ng-if="!item.cardHandhold">
+                        <span class="text">无手<br />持照</span>
+                    </div>
+                </td>
+                <td>
+                    <a href="javascript:;" ng-click="vm.detailed(item)">详细</a>
+                    <a href="javascript:;" class="greentradedetail" ng-click="vm.passDialog(item.auditStatus, item.id)">通过</a>
+                    <a href="javascript:;" class="redtradedetail" ng-click="vm.rejectDialog(item.auditStatus, item.id)">拒绝</a>
+                </td>
+            </tr>
+            <tr class="ui-no-data" ng-if="vm.isLoading === false && (!vm.list||vm.list.length === 0)">
+                <td colspan="12">暂无数据</td>
+            </tr>
+            <tr class="ui-loading" ng-if="vm.isLoading === true">
+                <td colspan="12">正在加载，请稍候...</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="ui-pager-box" v-if="vm.totalNum > 0">
+        <ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页" total-items="vm.totalNum"
+            ng-model="vm.condition.pageNo" max-size="5" items-per-page="vm.condition.pageSize || 10" align="right"
+            class="pagination" boundary-links="true" ng-change="vm.pageChanged()" rotate="false"></ul>
+    </div>
+    <div class="img-dialog-warp" ng-if="vm.imgDialogIsShow" ng-click="vm.closeImg(); $event.stopPropagation();">
+        <div class="img-dialog-innerbox" id="imgMovs">
+            <img id="imgMov" ng-src="{{vm.imgDialogSrc}}" ondragstart="return false;" alt="">
+        </div>
+    </div>
+</div>

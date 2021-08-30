@@ -1,0 +1,53 @@
+<div class="loginwindow">
+    <div class="home-banner-login">
+        <!--未登录 显示的样式-->
+        <div class="home-banner-login-box input-out-box" ng-style="{display: !vm.BloginSuccess ? 'block' : 'none'}">
+            <p class="home-banner-login-tit">商户登录</p>
+
+            <div class="home-banner-login-emailbox mt30px">
+                <input
+                        type="text"
+                        class="home-login-input"
+                        ng-model="vm.gyemail"
+                        ng-change="vm.gyemailChangeFN()"
+                />
+            </div>
+            <div class="home-banner-login-passwordbox mt30px">
+                <input
+                        type="password"
+                        class="home-login-input"
+                        ng-model="vm.gypassword"
+                        ng-change="vm.gypasswordChangeFN()"
+                        maxlength="16"
+                />
+            </div>
+            <div class="home-banner-login-indent mt30px" ng-style="{display:vm.BindentShow ? 'block' : 'none'}">
+                <input type="text" class="home-login-input" ng-change="vm.indentChangeFN()"
+                       ng-model="vm.indentCode"></input>
+                <img ng-src="{{vm.images.indentImg}}" class="home-banner-login-indent-img" ng-click="vm.getIndentFN()"/>
+            </div>
+            <p class="home-login-tips mt10px wred mb0px mt10px h40px ">
+                {{vm.tips}}
+            </p>
+            <p class="home-banner-login-submitbtn home-login-input nuse" ng-class="{yuse:vm.BloginBtn}"
+               ng-click="vm.loginFN()">
+                <a href="javascript:;">登录</a>
+            </p>
+            <p class="home-banner-login-ap">
+                <img ng-src={{vm.images.loginboxbottom}}>
+            </p>
+        </div>
+        <!--登录成功显示的样式-->
+        <div class="home-banner-login-box input-out-box" ng-style="{display:vm.BloginSuccess?'block':'none'}">
+            <div class="home-banner-login-success">
+                <span class="home-banner-login-success-img mt10px"></span>
+                <p class="home-banner-login-success-word wblue mt20px">
+                    登录成功！
+                </p>
+                <p class="home-banner-login-success-useraccnum mb50px">{{vm.userAccNum}}</p>
+                <p class="home-banner-login-success-gotoindex"><a href="/#/business/businesshome">进入商户首页</a></p>
+                <p class="home-banner-login-success-exit"><a href="javascript:;" ng-click="vm.exitFN()">退出登录</a></p>
+            </div>
+        </div>
+    </div>
+</div>

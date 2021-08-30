@@ -1,0 +1,156 @@
+/**
+ * @file
+ * @auth jinguangguo
+ * @date 2016/10/27
+ */
+
+.module-setting-symbol {
+    .coin-input {
+        padding: 0 4px;
+        height: 30px;
+    }
+
+    .btn {
+        font-size: 12px;
+        padding: 4px 6px;
+    }
+
+    select {
+        min-width: 60px;
+    }
+
+    .form-control {
+        height: 30px;
+        padding: 0 12px;
+    }
+
+    .f-flex {
+        position: relative;
+
+        .title {
+            float: left;
+        }
+    }
+
+    .m-title {
+        position: relative;
+        float: left;
+    }
+
+    .tips {
+        position: absolute;
+        top: 35px;
+        left: 50%;
+        background: rgb(74,76,91);
+        border-radius: 4px;
+        transform: translateX(-50%);
+        width: 350px;
+        padding: 10px;
+        margin-left: 2px;
+        color: #ffffff;
+        pointer-events: none;
+    }
+
+    .tips:after {
+        content: '';
+        position: absolute;
+        bottom: 100%;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 0;
+        height: 0;
+        border-width: 10px;
+        border-style: solid;
+        border-color: transparent;
+        border-bottom-width: 16px;
+        border-bottom-color: currentColor;
+        color: rgb(74,76,91);
+    }
+
+    .explain {
+        width: 15px;
+        height: 15px;
+        margin-left: 4px;
+        cursor: pointer;
+        border: 1px solid #000;
+        border-radius: 10px;
+        display: flex;
+        display: -webkit-flex;
+        justify-content: center;
+        align-items: center
+    }
+}
+
+.edit-form {
+    position: fixed;
+    top: 12%;
+    left: 23%;
+    width: 60%;
+    padding: 2% 5%;
+    background: #FFF;
+    box-shadow: 0 5px 15px #00000080;
+    border: 1px solid rgba(0, 0, 0, 0.2);
+    border-radius: 6px;
+    .col-sm-5 {
+        display: flex;
+        align-items: center;
+        min-width: 150px;
+    }
+
+    .title {
+        font-size: 16px;
+        color: #333;
+        border-bottom: 1px solid #ccc;
+        line-height: 40px;
+        margin-bottom: 24px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    .closeBtn {
+        color: #ccc;
+        padding: 5px 10px;
+        display: flex;
+        height: 30px;
+        align-items: center;
+        cursor: pointer;
+    }
+
+    .form-group {
+        // display: flex;
+        // justify-content: center;
+        text-align: left;
+    }
+
+    .out-box {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
+    }
+
+    .submitBtn {
+        margin-top: 10px;
+        background-color: #5cb85c;
+        border-color: #4cae4c;
+        color: #FFF;
+    }
+    .topTitle {
+        font-weight: bold;
+        margin: 0 3px;
+    }
+
+    .none {
+        display: none;
+    }
+    .flex {
+        display: flex;
+    }
+    .status-box .btn {
+        padding: 4px 12px;
+        margin-right: 10px;
+    }
+  }
+// th,td {
+//     text-align: center;
+// }

@@ -1,0 +1,76 @@
+<div class="compuser">
+    <ol class="breadcrumb fn-clearfix">
+        <li>券商管理</li>
+        <li><a href="/index.html#/users/companylist">券商列表</a></li>
+        <li>券商详情</li>
+    </ol>
+
+
+    <uib-tabset>
+        <!-- <uib-tab index="0" heading="资产概览" ng-click="vm.changeType('assetview')">
+            <div class="ui-box">
+                <asset-view brokerid="vm.brokerId" ng-if="vm.transferType==='assetview'"></asset-view>
+            </div>
+        </uib-tab> -->
+        <uib-tab index="1" heading="企业资产管理" ng-click="vm.changeType('rmbmanage')">
+            <rmb-manage brokerid="vm.brokerId" ng-if="vm.transferType==='rmbmanage'"></rmb-manage>
+        </uib-tab>
+        <!-- <uib-tab index="2" heading="GOP管理" ng-click="vm.changeType('gop')">
+            <users-company-nutentry brokerid="vm.brokerId" cointype="'gop'" ng-if="vm.transferType==='gop'"></users-company-nutentry>
+        </uib-tab>
+        <uib-tab index="3" heading="BTC管理" ng-click="vm.changeType('btc')">
+            <users-company-nutentry brokerid="vm.brokerId" cointype="'btc'" ng-if="vm.transferType==='btc'"></users-company-nutentry>
+        </uib-tab>
+        <uib-tab index="4" heading="交易详情" ng-click="vm.changeType('tradedetail')">
+            <users-company-tradedetail brokerid="vm.brokerId" ng-if="vm.transferType==='tradedetail'"></users-company-tradedetail>
+        </uib-tab> -->
+    </uib-tabset>
+
+
+
+    <!--<div class="compuser-title">-->
+        <!--<span class="compuser-title-left">企业用户</span>-->
+        <!--<span class="compuser-title-center">-></span>-->
+        <!--<span class="compuser-title-right">{{vm.businessName}}</span>-->
+    <!--</div>-->
+    <!--<hr style="border-top: solid 1px #ccc;margin-bottom: 10px;margin-top: 10px;"/>-->
+    <!--<div class="compuser-business">-->
+        <!--<div class="compuser-business-top">-->
+            <!--<span>商户名称：</span>-->
+            <!--<span style="font-weight:bold;">{{vm.businessName}}</span>-->
+            <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+            <!--<span>注册时间：</span>-->
+            <!--<span style="font-weight:bold;">{{vm.createDate}}</span>-->
+        <!--</div>-->
+        <!--<div class="compuser-business-bottom">-->
+            <!--<span>商户账号：</span>-->
+            <!--<span style="font-weight:bold;">{{vm.businessNo}}</span>-->
+        <!--</div>-->
+    <!--</div>-->
+    <!--<div class="compuser-body">-->
+        <!--<ul class="compuser-body-panel">-->
+            <!--<li ng-repeat="item in vm.items" class="compuser-body-panel-item"-->
+                <!--ng-class="{colorextra:vm.transferType===item.type}" -->
+                <!--ng-click="vm.changeType(item.type)">{{item.name}}</li>-->
+        <!--</ul>-->
+        <!--<div class="compuser-body-info">-->
+
+            <!--<asset-view businessid="vm.businessId" ng-if="vm.transferType==='assetview'">-->
+            <!--</asset-view>-->
+            <!--<rmb-manage businessid="vm.businessId" ng-if="vm.transferType==='rmbmanage'"> -->
+            <!--</rmb-manage>-->
+            <!--<batch-pay businessid="vm.businessId" ng-if="vm.transferType==='batchpay'">-->
+            <!--</batch-pay>-->
+            <!--<users-company-nutentry businessid="vm.businessId" -->
+                <!--ng-if="vm.transferType==='nutentry'">-->
+            <!--</users-company-nutentry>-->
+
+            <!--<users-company-tradedetail businessid="vm.businessId" -->
+                <!--ng-if="vm.transferType==='tradedetail'">-->
+            <!--</users-company-tradedetail>-->
+            <!--<users-company-account  businessid="vm.businessId" ng-if="vm.transferType==='account'"></users-company-account>-->
+
+        <!--</div>-->
+    <!--</div>-->
+</div>

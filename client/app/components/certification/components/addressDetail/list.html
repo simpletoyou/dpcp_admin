@@ -1,0 +1,184 @@
+<div class="certification-detail address-detail">
+
+    <h3 class="title">基础信息</h3>
+    <div class="m-form-dialog">
+        <div class="col-row">
+            <div class="col-label">
+                <label>全名：</label>
+            </div>
+            <div class="col-text col-text--block">
+                <span class="text">{{vm.basicInfo.firstName}}&nbsp;{{vm.basicInfo.middleName}}&nbsp;{{vm.basicInfo.lastName}}</span>
+            </div>
+        </div>
+
+        <div class="col-row">
+            <div class="col-label">
+                <label>性别：</label>
+            </div>
+            <div class="col-text col-text--block">
+                <span class="text">{{vm.basicInfo.gender}}</span>
+            </div>
+        </div>
+
+        <div class="col-row">
+            <div class="col-label">
+                <label>出生日期：</label>
+            </div>
+            <div class="col-text col-text--block">
+                <span class="text">{{vm.basicInfo.birthday}}</span>
+            </div>
+        </div>
+
+        <div class="col-row">
+            <div class="col-label">
+                <label>国籍：</label>
+            </div>
+            <div class="col-text col-text--block">
+                <span class="text">{{vm.residenceInfo.country}}</span>
+            </div>
+        </div>
+    </div>
+
+
+
+    <h3 class="title">居住证明</h3>
+    <div class="m-form-dialog">
+        <div class="col-row">
+            <div class="col-label">
+                <label>城市：</label>
+            </div>
+            <div class="col-text col-text--block">
+                <span class="text">{{vm.residenceInfo.city}}</span>
+            </div>
+        </div>
+        <div class="col-row">
+            <div class="col-label">
+                <label>地址：</label>
+            </div>
+            <div class="col-text col-text--block">
+                <span class="text">{{vm.residenceInfo.address}}</span>
+            </div>
+        </div>
+        <div class="col-row">
+            <div class="col-label">
+                <label>邮编：</label>
+            </div>
+            <div class="col-text col-text--block">
+                <span class="text">{{vm.residenceInfo.postcode}}</span>
+            </div>
+        </div>
+
+        <div class="col-row">
+            <div class="col-label">
+                <label>居住证明照：</label>
+            </div>
+            <div class="col-text">
+                <ul id="residencePhoto">
+                    <li ng-repeat="item in vm.residenceInfo.residencePhoto track by $index">
+                        <div ng-if="item.toUpperCase().indexOf('PDF')<0">
+                            <!--<a href="{{item}}" target="_blank">-->
+                                <img ng-src="{{'/exchange_manager/common/photo?name='+item ||''}}" alt="此处有照片，如果没有加载出来，请刷新一下" class="certificate-img" >
+                            <!--</a>-->
+                        </div>
+                        <div ng-if="item.toUpperCase().indexOf('PDF')>=0">
+                            <a href="{{'/exchange_manager/common/photo?name='+item}}" target="_blank" download>
+                                <img ng-src="{{'/exchange_manager/common/photo?name='+imgs.pdf}}" alt="pdf格式文件，请下载查看" class="img-pdf">
+                            </a>
+                        </div>
+                        <a href="{{'/exchange_manager/common/photo?name='+item}}" target="_blank">{{item}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!--<div class="col-row">-->
+            <!--<a ng-href="{{''}}" target="_blank">-->
+                <!--<img ng-src="{{''}}" alt="" class="certificate-img" style="border:  1px solid red;">-->
+            <!--</a>-->
+        <!--</div>-->
+
+        <div class="col-row">
+            <div class="col-label">
+                <label>翻译照：</label>
+            </div>
+            <div class="col-text">
+                <ul id="residenceTranslate">
+                    <li class="no-data" ng-if="vm.identityInfo.residenceTranslate.length === 0">
+                        无翻译照
+                    </li>
+                    <li ng-repeat="item in vm.residenceInfo.residenceTranslate track by $index">
+                        <div ng-if="item.toUpperCase().indexOf('PDF')<0">
+                            <a href="{{'/exchange_manager/common/photo?name='+item}}" target="_blank">
+                                <img ng-src="{{'/exchange_manager/common/photo?name='+item||''}}" alt="此处有照片，如果没有加载出来，请刷新一下" class="certificate-img" >
+                            </a>
+                        </div>
+                        <div ng-if="item.toUpperCase().indexOf('PDF')>=0">
+                            <a href="{{'/exchange_manager/common/photo?name='+item}}" target="_blank" download>
+                                <img ng-src="{{'/exchange_manager/common/photo?name='+imgs.pdf}}"  alt="pdf格式文件，请下载查看" class="img-pdf">
+                            </a>
+                        </div>
+                        <a href="{{'/exchange_manager/common/photo?name='+item}}" target="_blank">{{item}}</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <h3 class="title">认证历史</h3>
+
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th width="20%">提交时间</th>
+            <th width="20%">审核时间</th>
+            <th width="20%">审核结果</th>
+            <th width="20%">原因</th>
+            <th width="20%">审核人</th>
+
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="item in vm.residenceHistory" ng-if="vm.isLoading === false && vm.residenceHistory.length > 0">
+            <td>{{$root.moment(item.createDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+            <td>{{$root.moment(item.auditDate).utc().utcOffset($root.ZONE).format('YYYY-MM-DD HH:mm:ss')}}</td>
+            <td ng-class="{'font-red':(item.auditStatus=='FAIL')}">{{item.auditStatus | auditStatus}}</td>
+            <td>{{item.auditMessageId | auditMessage}}</td>
+            <td>{{item.auditUid}}</td>
+        </tr>
+        <tr class="ui-no-data" ng-if="vm.isLoading === false && (!vm.residenceHistory||vm.residenceHistory.length === 0)">
+            <td colspan="12">暂无数据</td>
+        </tr>
+        <tr class="ui-loading" ng-if="vm.isLoading === true">
+            <td colspan="12">正在加载，请稍候...</td>
+        </tr>
+        </tbody>
+    </table>
+
+
+    <div ng-if="vm.opt==='operate'">
+        <h3 class="title">操作</h3>
+        <label class="radio-label">
+            <input class="radio-input" type="radio" value="OK" ng-model="vm.audit.auditStatus" name="option" ng-click="vm.disableSelect()">通过
+        </label>
+        <label class="radio-label">
+            <input class="radio-input" type="radio" value="FAIL" ng-model="vm.audit.auditStatus" name="option" ng-click="vm.enableSelect()">拒绝
+        </label>
+
+        <select  id="auditMessage" class="select" ng-model="vm.audit.auditMessageId" ng-focus="vm.focusOnAuditMessage()">
+            <option value="">==请选择==</option>
+            <option value="{{item}}" ng-repeat="item in vm.CONFIG.FAIL_REASON">{{item.CN}}</option>
+        </select>
+        <div id="auditMessageTip"></div>
+
+        <div class="btn-group">
+            <button class="ui-btn" ng-click="vm.submit()">确定</button>
+            <button class="back" onclick="history.go(-1)">返回</button>
+            <!--<button class="back" onclick="window.close()">取消</button>-->
+        </div>
+    </div>
+    <button ng-if="vm.opt!=='operate'" class="back" onclick="history.go(-1)">返回</button>
+    <!--<button ng-if="vm.opt!=='operate'" class="back" onclick="window.close()">关闭</button>-->
+</div>

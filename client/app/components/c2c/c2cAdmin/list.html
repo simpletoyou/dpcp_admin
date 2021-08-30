@@ -1,0 +1,337 @@
+<div class="module-setting">
+    <ol class="breadcrumb fn-clearfix">
+        <li>网站维护</li>
+        <li>C2C配置</li>
+    </ol>
+    <div class="ui-box">
+        <form class="form-horizontal" role="form">
+            <div class="form-group">
+                <label for="assetCode" class="control-label">C2C各VIP等级保证金缴纳数量配置</label>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP1 保证金数量：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipOne.assureAsset"
+                        placeholder="保证金数量" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipOne','assureAsset','ensureAsset')">修改</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP2 保证金数量：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipTwo.assureAsset"
+                        placeholder="保证金数量" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipTwo','assureAsset','ensureAsset')">修改</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP3 保证金数量：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipThree.assureAsset"
+                        placeholder="保证金数量" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipThree','assureAsset','ensureAsset')">修改</button>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="assetCode" class="control-label">C2C各VIP等级发布挂单配置</label>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP1 发布挂单上限</label>
+                <label for="name" class="col-sm-1 control-label">售卖区上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipOne.sellAdNum"
+                        placeholder="售卖区上限" />
+                </div>
+                <label for="name" class="col-sm-1 control-label">收购区上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipOne.buyAdNum"
+                        placeholder="收购区上限" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipOne',['buyAdNum','sellAdNum'],'adNum')">修改</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP2 发布挂单上限</label>
+                <label for="name" class="col-sm-1 control-label">售卖区上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipTwo.sellAdNum"
+                        placeholder="售卖区上限" />
+                </div>
+                <label for="name" class="col-sm-1 control-label">收购区上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipTwo.buyAdNum"
+                        placeholder="收购区上限" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipTwo',['buyAdNum','sellAdNum'],'adNum')">修改</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP3 发布挂单上限</label>
+                <label for="name" class="col-sm-1 control-label">售卖区上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipThree.sellAdNum"
+                        placeholder="售卖区上限" />
+                </div>
+                <label for="name" class="col-sm-1 control-label">收购区上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipThree.buyAdNum"
+                        placeholder="收购区上限" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipThree',['buyAdNum','sellAdNum'],'adNum')">修改</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="assetCode" class="control-label">售卖区手续费</label>
+            </div>
+            <div class="form-group" ng-repeat="item in vm.list">
+                <label for="webUrl" class="col-sm-2 control-label">{{item.assetCode}}</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" ng-model="vm.list[$index].sellCoinNum" maxlength="256"
+                        placeholder="手续费配置" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('','sellCoinNum','','assetCodeFee',$index,'SELL')">修改</button>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="assetCode" class="control-label">收购区手续费</label>
+            </div>
+            <div class="form-group" ng-repeat="item in vm.list">
+                <label for="webUrl" class="col-sm-2 control-label">{{item.assetCode}}</label>
+                <div class="col-sm-1">
+                    <input type="text" class="form-control" ng-model="vm.list[$index].buyCoinNum" maxlength="256"
+                        placeholder="手续费配置" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('','buyCoinNum','','assetCodeFee',$index,'BUY')">修改</button>
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <label for="assetCode" class="control-label">c2c各VIP等级单笔售卖（收购）数量配置</label>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP1 单笔数量上限</label>
+                <label for="name" class="col-sm-1 control-label">售卖区单笔上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipOne.sellCoinNum"
+                        placeholder="售卖区单笔上限" />
+                </div>
+                <label for="name" class="col-sm-1 control-label">收购区单笔上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipOne.buyCoinNum"
+                        placeholder="收购区单笔上限" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipOne',['buyCoinNum','sellCoinNum'],'adAssetNum')">修改</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP2 单笔数量上限</label>
+                <label for="name" class="col-sm-1 control-label">售卖区单笔上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipTwo.sellCoinNum"
+                        placeholder="售卖区单笔上限" />
+                </div>
+                <label for="name" class="col-sm-1 control-label">收购区单笔上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipTwo.buyCoinNum"
+                        placeholder="收购区单笔上限" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipTwo',['buyCoinNum','sellCoinNum'],'adAssetNum')">修改</button>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="name" class="col-sm-2 control-label">VIP3 单笔数量上限</label>
+                <label for="name" class="col-sm-1 control-label">售卖区单笔上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipThree.sellCoinNum"
+                        placeholder="售卖区单笔上限" />
+                </div>
+                <label for="name" class="col-sm-1 control-label">收购区单笔上限：</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.VipThree.buyCoinNum"
+                        placeholder="收购区单笔上限" />
+                </div>
+                <div class="col-sm-1">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.updata('VipThree',['buyCoinNum','sellCoinNum'],'adAssetNum')">修改</button>
+                </div>
+            </div>
+            <!-- c2c交易币种类型配置 -->
+            <div class="form-group">
+                <label for="assetCode" class="control-label">c2c交易币种类型配置</label>
+            </div>
+            <div class="form-group">
+                <label for="assetCode2" class="col-sm-1 control-label">交易币种</label>
+                <div class="col-sm-2">
+                    <select class="form-control" ng-model="vm.assetCode1" id="assetCode2" ng-change="vm.changeCoin1()">
+                        <option value="{{item.value}}" ng-repeat="item in $root.$coinList">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </div>
+                <label for="types" class="col-sm-1 control-label" style="width: auto;">类型</label>
+                <div class="col-sm-2">
+                    <select class="form-control" ng-model="vm.type1" id="assetCode2" ng-change="vm.changeType1()">
+                        <option value="{{item.value}}" ng-repeat="item in vm.types">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-1" ng-if="vm.status1!=='LISTED'&&vm.status1!=='DELISTED'">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.add1('one')">添加</button>
+                </div>
+                <div class="col-sm-1" ng-if="vm.status1==='LISTED'||vm.status1==='DELISTED'">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.del1()">删除</button>
+                </div>
+                <div class="col-sm-2">
+                    <span class="text" ng-if="vm.status1==='DELISTED'">已关闭</span>
+                    <span class="text" ng-if="vm.status1==='LISTED'">已开启</span>
+                    <span class="status-box" ng-if="vm.status1==='DELISTED'">
+                        <a href="javascript:;" ng-click="vm.open1(1)"
+                            class="btn btn-success">开启</a>
+                        <a href="javascript:;" disabled
+                            class="btn btn-default">关闭</a>
+                    </span>
+                    <span class="status-box" ng-if="vm.status1==='LISTED'">
+                        <a href="javascript:;" disabled 
+                            class="btn btn-success">开启</a>
+                        <a href="javascript:;" ng-click="vm.open1(0)"
+                            class="btn btn-default">关闭</a>
+                    </span>
+                </div>
+            </div>
+            <!-- c2c国家数据配置 -->
+            <div class="form-group">
+                <label for="assetCode" class="control-label">c2c国家数据配置</label>
+            </div>
+            <div class="form-group">
+                <label for="assetCode2" class="col-sm-1 control-label">国家</label>
+                <div class="col-sm-2">
+                    <select  class="form-control" ng-model="vm.country1" ng-options="x.label for x in vm.country" ng-change="vm.changeCountry1()">
+                    </select>
+                </div>
+                <label for="types" class="col-sm-1 control-label" style="width: auto;">类型</label>
+                <div class="col-sm-2">
+                    <select class="form-control" ng-model="vm.type2" id="assetCode2" ng-change="vm.changeType2()">
+                        <option value="{{item.value}}" ng-repeat="item in vm.types">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </div>
+                <label for="types" class="col-sm-1 control-label" style="width: auto;">币种汇率</label>
+                <div class="col-sm-1">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.rate"
+                        placeholder="币种汇率" />
+                </div>
+                <div class="col-sm-1" ng-if="vm.status2!=='LISTED'&&vm.status2!=='DELISTED'">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.add2()">添加</button>
+                </div>
+                <div class="col-sm-1" ng-if="vm.status2==='LISTED'||vm.status2==='DELISTED'">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.del2()">删除</button>
+                </div>
+                <div class="col-sm-3">
+                    <span class="text" ng-if="vm.status2==='DELISTED'">已关闭</span>
+                    <span class="text" ng-if="vm.status2==='LISTED'">已开启</span>
+                    <span class="status-box">
+                        <a href="javascript:;" ng-click="vm.open2(1)"
+                            class="btn btn-success">修改（开启）</a>
+                        <a href="javascript:;" ng-click="vm.open2(0)"
+                            class="btn btn-default">修改（关闭）</a>
+                    </span>
+                </div>
+            </div>
+            <!-- c2c货币类型配置 -->
+            <div class="form-group">
+                <label for="assetCode" class="control-label">c2c货币类型配置</label>
+            </div>
+            <div class="form-group">
+                <label for="assetCode2" class="col-sm-1 control-label">货币</label>
+                <div class="col-sm-2">
+                    <select class="form-control" ng-model="vm.country2" ng-options="x.label for x in vm.country" ng-change="vm.changeCountry2()">
+                    </select>
+                </div>
+                <label for="types" class="col-sm-1 control-label" style="width: auto;">类型</label>
+                <div class="col-sm-2">
+                    <select class="form-control" ng-model="vm.type3" id="assetCode2" ng-change="vm.changeType3()">
+                        <option value="{{item.value}}" ng-repeat="item in vm.types">
+                            {{item.label}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-sm-1" ng-if="vm.status3!=='LISTED'&&vm.status3!=='DELISTED'">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.add3()">添加</button>
+                </div>
+                <div class="col-sm-1" ng-if="vm.status3==='LISTED'||vm.status3==='DELISTED'">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.del3()">删除</button>
+                </div>
+                <div class="col-sm-3">
+                    <span class="text" ng-if="vm.status3==='DELISTED'">已关闭</span>
+                    <span class="text" ng-if="vm.status3==='LISTED'">已开启</span>
+                    <span class="status-box">
+                        <a href="javascript:;" ng-click="vm.open3(1)"
+                            class="btn btn-success">修改（开启）</a>
+                        <a href="javascript:;" ng-click="vm.open3(0)"
+                            class="btn btn-default">修改（关闭）</a>
+                    </span>
+                </div>
+            </div>
+            <!-- c2c保证金收款地址配置 -->
+            <div class="form-group">
+                <label for="assetCode" class="control-label">c2c保证金收款地址配置</label>
+            </div>
+            <div class="form-group">
+                <label for="assetCode2" class="col-sm-1 control-label">收款地址</label>
+                <div class="col-sm-4">
+                    <input type="text" maxlength="50" class="form-control" ng-model="vm.address"
+                        placeholder="地址" />
+                </div>
+                <div class="col-sm-1" ng-if="vm.id4===''">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.add4()">添加</button>
+                </div>
+                <div class="col-sm-1" ng-if="vm.id4!==''">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.open4()">修改</button>
+                </div>
+                <div class="col-sm-1" ng-if="vm.id4!==''">
+                    <button type="button" class="btn btn-primary"
+                        ng-click="vm.del4()">删除</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</div>

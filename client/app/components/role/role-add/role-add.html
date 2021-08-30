@@ -1,0 +1,11 @@
+<div class="panel-wrap">
+    <ol class="breadcrumb fn-clearfix">
+        <li>角色管理</li>
+        <li>添加角色</li>
+    </ol>
+    <form class="form-inline ui-form" role="form">
+        <label for="roleName">角色名称</label>
+        <input id="roleName" style="width: 400px;display: inline-block;" class="form-control" ng-model="vm.roleName" type="text" placeholder="请输入角色名称"><br/>
+        <button ng-disabled="vm.roleName == ''" style="margin-left: 400px;margin-top: 15px;" class="btn btn-primary" ng-click="vm.addRole()">添加</button>
+    </form>
+</div>
