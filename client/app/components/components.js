@@ -5,12 +5,7 @@ import services from '../services';
 
 
 // 账户管理
-import admin from './admin/admin';
 import adminUser from './admin/user/list'
-import adminRole from './admin/role/list'
-import adminUserLoginLog from './admin/user/loginLog/list'
-import adminUserAdd from './admin/user/add/list'
-import adminUserMember from './admin/user/member/list'
 
 //角色
 import rolePeople from './role/role-people/role-people'
@@ -25,9 +20,6 @@ import basicinfo from './commonusers/personalinfo/basicinfo/basicinfo';
 import bankcard from './commonusers/personalinfo/bankcard/bankcard';
 
 
-import errorHandle from './asset/errorHandle/errorHandle';
-import errorHandleCurrent from './asset/errorHandle/current/list';
-import errorHandleHistory from './asset/errorHandle/history/list';
 
 //控制面板 设置密码
 import setPassword from './account/setPwd/list'
@@ -39,8 +31,6 @@ import googleAuth from './account/googleAuth/list'
 import loginInfoList from './account/loginInfo/list'
 
 
-//用户资产
-import property from './coin/property/list';
 
 export default angular.module('app.components', [
 
@@ -48,12 +38,8 @@ export default angular.module('app.components', [
 
 
     // 账户权限管理
-    admin.name,
     adminUser.name,
-    adminRole.name,
-    adminUserLoginLog.name,
-    adminUserAdd.name,
-    adminUserMember.name,
+
 
     // 角色
     roleList.name,
@@ -66,15 +52,9 @@ export default angular.module('app.components', [
     basicinfo.name,
     bankcard.name,
 
-    errorHandle.name,
-    errorHandleCurrent.name,
-    errorHandleHistory.name,
-
     setPassword.name,
     googleAuth.name,
     loginInfoList.name,
 
-    //用户资产
-    property.name,
 
 ]);
