@@ -31,19 +31,12 @@ class CommonmenuController {
             return '/' + item.menuModule
         })
         
-        //增加发布公告全员可用
-        urlArr.push('/notice/list')
-        urlArr.push('/notice/applist')
-        urlArr.push('/notice/appcreate')
-        urlArr.push('/notice/add')
-        urlArr.push('/notice/create')
-        urlArr.push('/notice/member')
-        urlArr.push('/notice/alist')
-        urlArr.push('/notice/iconlist')
-        urlArr.push('/notice/iconadd')
-        urlArr.push('/trade/guojing')
-        urlArr.push('/trade/guojingAdmin')
-        urlArr.push('/trade/C2C')
+        //增加dpcp box配置
+        urlArr.push('/dpcp/config')
+        urlArr.push('/dpcp/files')
+        urlArr.push('/dpcp/notice')
+        urlArr.push('/dpcp/feedback')
+       
         // urlArr.push('/setting/reward')
         // urlArr.push('/setting/calculationConfig')
         // urlArr.push('/trade/awardRecord')
@@ -95,16 +88,8 @@ class CommonmenuController {
             currentNav = this.getParent();
         }
 
-        console.log('currentNav',currentNav)
-
         if(currentNav && currentNav.nodes){
             this.menuList = currentNav.nodes;
-        }
-        console.log('this.menuList',this.menuList)
-        for(let i of this.menuList) {
-            if(i.title === '参数配置' || i.title === '产品文档') {
-                i.isInUrlArr = true
-            }
         }
 
     }

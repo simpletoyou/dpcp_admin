@@ -10,6 +10,8 @@ import adminUser from './admin/user/list'
 //DPCP Box
 import dpcpConfig from './dpcp/dpcp-config/dpcp-config'
 import dpcpFiles from './dpcp/dpcp-files/dpcp-files'
+import dpcpNotice from './dpcp/dpcp-notice/dpcp-notice'
+import dpcpFeedback from './dpcp/dpcp-feedback/dpcp-feedback'
 
 
 // DPCP Lend
@@ -45,6 +47,8 @@ export default angular.module('app.components', [
     // DPCP Box
     dpcpConfig.name,
     dpcpFiles.name,
+    dpcpFeedback.name,
+    dpcpNotice.name,
 
     commonusers.name,
     personalinfo.name,

@@ -1,0 +1,50 @@
+<!--
+ * @Description: 
+ * @version: 
+ * @Author: chenchuhua
+ * @Date: 2021-08-30 10:36:36
+ * @LastEditors: chenchuhua
+ * @LastEditTime: 2021-08-31 19:16:07
+-->
+<div class="panel-wrap">
+    <ol class="breadcrumb fn-clearfix">
+        <li>DPCP Box</li>
+        <li>公告发布</li>
+    </ol>
+    <div class="panel panel-warning">
+        <!--<div class="panel-heading">-->
+        <!--<h3 class="panel-title">操作</h3>-->
+        <!--</div>-->
+        <div class="panel-body">
+            <a href="javascript:;" class="btn btn-warning">添加</a>
+        </div>
+    </div>
+
+    <div class="ui-box">
+        
+        <div class="notice-box">
+            <div class="sub" ng-repeat="item in vm.noticeList">
+                <div class="title">{{item.title}}</div>
+                <div class="center-box">
+                    <div class="text">
+                        <div class="left1">
+                            {{item.detail}}
+                        </div>
+                        <div class="right1">
+                        <span>编辑</span>
+                        <span>删除</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="time">{{item.time}}</div>
+            </div>
+        </div>
+
+        <!-- <div class="ui-pager-box" v-if="vm.totalNum > 0">
+            <ul uib-pagination previous-text="上一页" next-text="下一页" first-text="首页" last-text="尾页"
+                total-items="vm.totalNum" ng-model="vm.condition.pageNo" max-size="5" items-per-page="vm.pageSize || 10"
+                align="right" class="pagination" boundary-links="true" ng-change="vm.pageChanged()" rotate="false"></ul>
+        </div> -->
+    </div>
+
+</div>

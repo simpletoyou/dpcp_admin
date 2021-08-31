@@ -101,9 +101,10 @@ angular.module('app', [
             return '/' + item.menuModule
         })
 
-        urlArr.push("/dpcp/config","/dpcp/files")
-
-        console.log('urlArr',urlArr)
+        urlArr.push("/dpcp/config")
+        urlArr.push("/dpcp/files")
+        urlArr.push("/dpcp/notice")
+        urlArr.push("/dpcp/feedback")
 
         $rootScope.$on('$stateChangeStart',function (event, toState, toParams, fromState, fromParams) {
             let hashPath = $location.$$path
@@ -115,9 +116,6 @@ angular.module('app', [
                     return url === hashPath || (url + '/') === hashPath
                 }
             })
-
-            console.log('hashPath',hashPath)
-            console.log('isInUrlArr',isInUrlArr)
             if(hashPath.indexOf('/notice') > -1){
 
             // }else if(hashPath.indexOf('/setting/reward') > -1){

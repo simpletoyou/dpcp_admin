@@ -4,7 +4,7 @@
  * @Author: chenchuhua
  * @Date: 2021-08-30 10:36:33
  * @LastEditors: chenchuhua
- * @LastEditTime: 2021-08-31 15:02:33
+ * @LastEditTime: 2021-08-31 17:08:33
  */
 const tree_items = [
     //菜单列表
@@ -34,14 +34,14 @@ const tree_items = [
                 title: '产品文档',
                 url: '/dpcp/files'
             },
-            // {
-            //     title: '公告发布',
-            //     url: '/role/list'
-            // },
-            // {
-            //     title: '用户反馈',
-            //     url: '/role/add'
-            // }
+            {
+                title: '公告发布',
+                url: '/dpcp/notice'
+            },
+            {
+                title: '用户反馈',
+                url: '/dpcp/feedback'
+            }
         ]
     },
 
