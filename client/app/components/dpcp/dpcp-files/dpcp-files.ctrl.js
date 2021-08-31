@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: chenchuhua
+ * @Date: 2021-08-30 10:36:36
+ * @LastEditors: chenchuhua
+ * @LastEditTime: 2021-08-31 14:51:19
+ */
 /**
  * @desc
  * auther:yxc
@@ -42,7 +50,7 @@ class RoleAddController {
             console.log(password)
             that.roleService.addRole({roleName:that.roleName},{'login-password': password}).then(res=>{
                 if(res.code === window.CODE.SUCCESS){
-                    let url = '/role/list'
+                    let url = '/dpcp/dpcp-config'
                     that.$location.url(url)
                 }else {
                     window.toast(res.msg);

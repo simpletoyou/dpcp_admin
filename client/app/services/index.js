@@ -4,7 +4,7 @@
  * @Author: chenchuhua
  * @Date: 2021-08-30 10:36:37
  * @LastEditors: chenchuhua
- * @LastEditTime: 2021-08-31 10:49:12
+ * @LastEditTime: 2021-08-31 14:19:15
  */
 // 公共接口
 import api from './api';
@@ -30,11 +30,9 @@ export default angular
     .service({
         commonSvc,
         enumSvc,
-        
         confirmGopSvc,
         commonusersSvc,
         roleService,
         adminSvc,
         loginSvc
-     
     });

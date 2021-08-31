@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: chenchuhua
+ * @Date: 2021-08-31 14:56:46
+ * @LastEditors: chenchuhua
+ * @LastEditTime: 2021-08-31 14:58:56
+ */
 /**
  * @file
  * @auth jinguangguo
@@ -32,12 +40,5 @@ export default class accountSvc{
     fetchLoginLog(params = {},header){
         return this.Api.get('/admin/loginlog-info',params,header)
     }
-
-
-
-
-
-
-
 
 }

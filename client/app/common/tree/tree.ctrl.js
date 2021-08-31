@@ -95,8 +95,16 @@ class CommonmenuController {
             currentNav = this.getParent();
         }
 
+        console.log('currentNav',currentNav)
+
         if(currentNav && currentNav.nodes){
             this.menuList = currentNav.nodes;
+        }
+        console.log('this.menuList',this.menuList)
+        for(let i of this.menuList) {
+            if(i.title === '参数配置' || i.title === '产品文档') {
+                i.isInUrlArr = true
+            }
         }
 
     }

@@ -4,7 +4,7 @@
  * @Author: chenchuhua
  * @Date: 2021-08-30 10:36:33
  * @LastEditors: chenchuhua
- * @LastEditTime: 2021-08-30 10:59:07
+ * @LastEditTime: 2021-08-31 15:52:26
 -->
 <div class='header-wrap'>
     <div class='header'>
@@ -20,7 +20,7 @@
             <span class='header-logo-text'>DPCP控制中心</span>
             <ul class="header-nav">
                 <li ng-if="vm.returnRolePerm('用户')" class="nav-item"><a class="nav-item-link" href="#/admin/user" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/admin')==0}">账户管理</a></li>
-                <li ng-if="vm.returnRolePerm('角色')" class="nav-item"><a class="nav-item-link" href="#/role/list" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/role')==0}">DPCP Box</a></li>
+                <li ng-if="vm.returnRolePerm('角色')" class="nav-item"><a class="nav-item-link" href="#/dpcp/config" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/role')==0}">DPCP Box</a></li>
                 <li ng-if="vm.returnRolePerm('用户管理')" class="nav-item"><a class="nav-item-link" href="#/commonusers/commonusers" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/commonuser')==0 }">DPCP Lend</a></li>
             </ul>
             <span class='header-logout' ng-click='vm.logout()'>退出</span>
@@ -31,7 +31,7 @@
             <span class='header-logo-text'>DPCP控制中心</span>
             <ul class="header-nav">
                 <li ng-if="vm.returnRolePerm('用户')" class="nav-item"><a class="nav-item-link" href="#/admin/user" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/admin')==0}">账户管理</a></li>
-                <li ng-if="vm.returnRolePerm('角色')" class="nav-item"><a class="nav-item-link" href="#/role/list" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/role')==0}">DPCP Box</a></li>
+                <li ng-if="vm.returnRolePerm('角色')" class="nav-item"><a class="nav-item-link" href="#/dpcp/config" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/role')==0}">DPCP Box</a></li>
                 <li ng-if="vm.returnRolePerm('用户管理')" class="nav-item"><a class="nav-item-link" href="#/commonusers/commonusers" ng-class="{'nav-item-link--active':vm.$location.path().indexOf('/commonuser')==0 }">DPCP Lend</a></li>
             </ul>
             <span class='header-logout' ng-click='vm.logout()'>退出</span>

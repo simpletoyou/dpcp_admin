@@ -4,7 +4,7 @@
  * @Author: chenchuhua
  * @Date: 2021-08-30 10:36:33
  * @LastEditors: chenchuhua
- * @LastEditTime: 2021-08-30 14:29:29
+ * @LastEditTime: 2021-08-31 15:02:33
  */
 const tree_items = [
     //菜单列表
@@ -25,23 +25,23 @@ const tree_items = [
     {
         default: true,
         title: 'DPCP Box',
-        url: '/role/list',
+        url: '/dpcp/config',
         nodes: [{
                 title: '参数配置',
-                url: '/role/list',
+                url: '/dpcp/config',
             },
             {
                 title: '产品文档',
-                url: '/role/add'
+                url: '/dpcp/files'
             },
-            {
-                title: '公告发布',
-                url: '/role/list'
-            },
-            {
-                title: '用户反馈',
-                url: '/role/add'
-            }
+            // {
+            //     title: '公告发布',
+            //     url: '/role/list'
+            // },
+            // {
+            //     title: '用户反馈',
+            //     url: '/role/add'
+            // }
         ]
     },
 

@@ -7,11 +7,12 @@ import services from '../services';
 // 账户管理
 import adminUser from './admin/user/list'
 
-//角色
-import rolePeople from './role/role-people/role-people'
-import roleList from './role/role-list/role-list'
-import roleAdd from './role/role-add/role-add'
-import rolePerm from './role/row-perm/role-perm'
+//DPCP Box
+import dpcpConfig from './dpcp/dpcp-config/dpcp-config'
+import dpcpFiles from './dpcp/dpcp-files/dpcp-files'
+
+
+// DPCP Lend
 
 
 import commonusers from './commonusers/commonusers/commonusers';
@@ -41,11 +42,9 @@ export default angular.module('app.components', [
     adminUser.name,
 
 
-    // 角色
-    roleList.name,
-    rolePeople.name,
-    roleAdd.name,
-    rolePerm.name,
+    // DPCP Box
+    dpcpConfig.name,
+    dpcpFiles.name,
 
     commonusers.name,
     personalinfo.name,

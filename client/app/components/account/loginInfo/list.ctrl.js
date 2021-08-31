@@ -1,3 +1,11 @@
+/*
+ * @Description: 
+ * @version: 
+ * @Author: chenchuhua
+ * @Date: 2021-08-30 10:36:34
+ * @LastEditors: chenchuhua
+ * @LastEditTime: 2021-08-31 14:59:05
+ */
 import passwordDialog from '../passwordDialog.html';
 
 
@@ -21,6 +29,7 @@ class ListController {
             pageNum:0
         };
 
+        
         this.init();
     }
 
